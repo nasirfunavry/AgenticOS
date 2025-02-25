@@ -1,6 +1,7 @@
 const axios = require("axios");
 const { uploadTwitterPostTweet } = require("../services/twitterService");
 
+//api to register webhook with chaingpt
 const registerWebhook = async (req, res, next) => {
   try {
     const { url } = req.body;
@@ -29,6 +30,7 @@ const registerWebhook = async (req, res, next) => {
   }
 };
 
+// webhook to receive tweet and publish it
 const tweetWebhook = async (req, res, next) => {
   try {
     const { tweet } = req.body;
