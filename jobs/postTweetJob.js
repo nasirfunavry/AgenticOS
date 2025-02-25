@@ -15,6 +15,7 @@ function loadConfig() {
   }
 }
 
+// cron job to read schedule.json file and schedule tweet generation and posting according to prompt
 function scheduleTweets() {
   const config = loadConfig();
   for (const time in config) {

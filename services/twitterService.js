@@ -74,6 +74,7 @@ function loadTokens(encryptionKey) {
   }
 }
 
+//get access and refresh token after decrypting, it access token is expired generate new access token using refresh token
 const getAcesstokenOftwitterExtra = async () => {
   let { accessToken, refreshToken } = loadTokens(encryptionKey);
 
@@ -111,6 +112,7 @@ const getAcesstokenOftwitterExtra = async () => {
   }
 };
 
+// generate new access and refresh token from refresh token
 const refreshAccessToken = async (refreshToken) => {
   try {
     console.log("refreshing access token");
@@ -147,6 +149,7 @@ const refreshAccessToken = async (refreshToken) => {
   }
 };
 
+// get text to tweet using cron scheduled job
 const getTextForTweet = async (prompt) => {
   try {
     const response = await axios.post(
@@ -167,6 +170,7 @@ const getTextForTweet = async (prompt) => {
   }
 };
 
+// post tweet to twitter
 const postTweet = async (accessToken, message) => {
   const url = "https://api.twitter.com/2/tweets";
 
@@ -207,6 +211,7 @@ const generateAndPostTweet = async (prompt) => {
     }
 
     let tweet = await getTextForTweet(prompt);
+    // set limit according to your twitter apikey limits
     tweet = tweet.length > 270 ? tweet.substring(0, 270) + "..." : tweet;
     await uploadTwitterPostTweet(tweet);
   } catch (error) {
