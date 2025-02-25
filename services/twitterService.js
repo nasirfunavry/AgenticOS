@@ -156,7 +156,7 @@ const getTextForTweet = async (prompt) => {
       },
       {
         headers: {
-          "api-key": "4ca83cba-a40a-43fd-a215-d9b45f5aed9d",
+          "api-key": process.env.API_KEY,
         },
       }
     );
