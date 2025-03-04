@@ -4,7 +4,7 @@ import { env } from '../config/env';
 import { uploadTwitterPostTweet } from '../services/twitter.service';
 import { ApiResponse, TweetWebhookRequest, WebhookRegistrationRequest } from '../types';
 
-// ChainGPT API URL - hardcoded as it shouldn't change
+// ChainGPT API URL
 const CHAINGPT_API_URL = 'https://api.chaingpt.org';
 
 /**
