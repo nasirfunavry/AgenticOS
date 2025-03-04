@@ -1,6 +1,13 @@
-# Twitter AI Agent
+# ChainGPT Twitter AI Agent
 
-A TypeScript-based Twitter bot that automatically generates and posts tweets on a schedule using AI. Built with Hono, TypeScript, and Bun runtime.
+A TypeScript-based Twitter Agent that automatically generates and posts tweets on a schedule using AI. Built with Hono, TypeScript, and Bun runtime.
+
+## 🚀 Project Overview
+
+This open-source project provides two key features for automated tweet generation and posting:
+
+- 🕒 **Scheduled Tweeting with Cron Jobs**: Define a schedule file containing prompts and specific times for tweet generation. A cron job processes the schedule, generates tweets based on the provided prompt, and automatically publishes them.
+- 🔗 **Automated Tweeting via ChainGPT Webhooks**: Register your webhook with the ChainGPT portal and subscribe to specific news categories. When ChainGPT publishes news in a subscribed category, the project receives a relevant tweet and posts it automatically.
 
 ## Features
 
@@ -12,11 +19,30 @@ A TypeScript-based Twitter bot that automatically generates and posts tweets on 
 - 🚀 Ultra-fast Bun runtime for improved performance
 - 📊 TypeScript for type safety and better developer experience
 
-## Prerequisites
+## 🛠 Requirements
 
 - [Bun](https://bun.sh) 1.0+ runtime (faster alternative to Node.js)
 - Twitter API credentials (OAuth 2.0)
-- ChainGPT API key
+- A ChainGPT API key for authentication and access to the service
+- Credits for tweet generation (each tweet consumes 1 credit)
+
+## 🔑 How to Generate a ChainGPT API Key
+
+To use this project, follow these steps:
+
+1. **Access the API Dashboard**
+   - Go to the [ChainGPT API Dashboard](https://chaingpt.org/dashboard)
+   - Connect your crypto wallet to authenticate
+
+2. **Create an API Key**
+   - Click "Create New Key"
+   - Copy and securely store the secret phrase (required for authentication)
+
+3. **Purchase Credits**
+   - Visit [ChainGPT Credits](https://chaingpt.org/credits)
+   - Buy credits as each tweet generation consumes 1 credit
+
+Once you have your API key and credits, you're ready to start! 🚀
 
 ## Installation
 
@@ -60,6 +86,111 @@ A TypeScript-based Twitter bot that automatically generates and posts tweets on 
    CHAINGPT_API_KEY=your_chaingpt_api_key
    ```
 
+## 🔄 Working Steps
+
+Before running the project, follow these setup steps.
+
+### 🔑 Load Twitter Access Tokens
+
+Before generating tweets, you need to load your Twitter Access Token and Refresh Token into the project.
+
+**Request:**
+```
+POST {projectUrl}/api/tokens/
+```
+
+**Body:**
+```json
+{
+  "accessToken": "<your_access_token>",
+  "refreshToken": "<your_refresh_token>"
+}
+```
+
+Once done, the project can authenticate and post tweets on your behalf.
+
+### 🔁 Tweeting Workflows
+
+#### 📅 Flow 1: Scheduled Tweeting via Cron Job
+
+1. **Define Your Schedule**
+   Create a `schedule.json` file in the following format:
+
+   ```json
+   {
+     "14:30": "The future of AI",
+     "18:00": "Crypto markets are evolving"
+   }
+   ```
+   - Time: Must be in UTC format (HH:MM)
+   - Prompt: The text used to generate the tweet
+
+2. **Run the Cron Job**
+   The cron job executes automatically at the scheduled times, generating tweets using ChainGPT's tweet generation feature and publishing them.
+
+#### 🔔 Flow 2: Tweeting via ChainGPT News Categories
+
+1. **Get Available Categories**
+   Retrieve all available categories and your subscribed ones.
+
+   **Request:**
+   ```
+   GET https://webapi.chaingpt.org/category-subscription/
+   ```
+
+   **Headers:**
+   ```json
+   {
+     "api-key": "<your_api_key>"
+   }
+   ```
+   This returns a list of categories along with your current subscriptions.
+
+2. **Subscribe to Categories**
+   To subscribe, send a POST request with the category IDs.
+
+   **Request:**
+   ```
+   POST https://webapi.chaingpt.org/category-subscription/subscribe
+   ```
+
+   **Headers:**
+   ```json
+   {
+     "api-key": "<your_api_key>"
+   }
+   ```
+
+   **Body:**
+   ```json
+   {
+     "categoryIds": [2, 3]
+   }
+   ```
+   (IDs 2 and 3 correspond to the categories you want to tweet about.)
+
+3. **Register Webhook with ChainGPT**
+   Register your webhook with ChainGPT to receive updates.
+
+   **Request:**
+   ```
+   POST {base_url_of_your_project}/api/webhook/register
+   ```
+
+   **Body:**
+   ```json
+   {
+     "url": "{base_url_of_your_project}/api/webhook/"
+   }
+   ```
+
+   **How It Works:**
+   - This registers your webhook URL with ChainGPT
+   - When ChainGPT publishes news in your subscribed categories, it sends a POST request to your webhook
+   - The project processes the tweet and posts it to Twitter
+
+With this setup, the entire process is automated, ensuring real-time tweet updates for the latest news in your subscribed categories!
+
 ## Usage
 
 ### Development Mode
@@ -92,24 +223,6 @@ bun start
 - **POST /api/webhook**
   - Receive a tweet from a webhook and post it
   - Body: `{ "tweet": "Your tweet content" }`
-
-## Tweet Scheduling
-
-The application uses a schedule defined in `data/schedule.json` to post tweets at specific times. The format is:
-
-```json
-{
-  "HH:MM": "Prompt for generating tweet content"
-}
-```
-
-For example:
-```json
-{
-  "09:00": "Create a tweet about the latest crypto news",
-  "15:30": "Generate a meme about blockchain technology"
-}
-```
 
 ## Project Structure
 
@@ -172,5 +285,11 @@ ISC
 
 ## Author
 
-soroojshehryar01@gmail.com
+ChainGPT 
+
+## 📧 Support
+
+If you encounter any issues or need assistance, feel free to reach out via GitHub issues.
+
+👨‍💻 Happy Coding! 🚀
 
