@@ -31,7 +31,7 @@ This open-source project provides two key features for automated tweet generatio
 To use this project, follow these steps:
 
 1. **Access the API Dashboard**
-   - Go to the [ChainGPT API Dashboard](https://chaingpt.org/dashboard)
+   - Go to the [ChainGPT API Dashboard](https://app.chaingpt.org/apidashboard)
    - Connect your crypto wallet to authenticate
 
 2. **Create an API Key**
@@ -39,7 +39,7 @@ To use this project, follow these steps:
    - Copy and securely store the secret phrase (required for authentication)
 
 3. **Purchase Credits**
-   - Visit [ChainGPT Credits](https://chaingpt.org/credits)
+   - Visit [ChainGPT Credits](https://app.chaingpt.org/addcredits)
    - Buy credits as each tweet generation consumes 1 credit
 
 Once you have your API key and credits, you're ready to start! 🚀
