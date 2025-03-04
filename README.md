@@ -1,122 +1,177 @@
-Project Overview
-This open-source project provides two key features for automated tweet generation and posting
-Scheduled Tweeting with Cron Jobs
-Users can define a schedule file containing prompts and specific times for tweet generation.
-A cron job will process the schedule, generate a tweet based on the provided prompt, and automatically publish it.
-Automated Tweeting via ChainGPT Webhooks
-Users can register their webhook with the ChainGPT portal and subscribe to specific news categories.
-Whenever ChainGPT publishes news in a subscribed category, the project will receive a relevant tweet and post it automatically.
-Requirements
-A ChainGPT API key is required for authentication and access to the service.
-Each tweet generation consumes 1 credit.
-How to generate API key
-To use this project, you need a ChainGPT API key. Follow these steps to generate one:
-Access the API Dashboard
-Go to ChainGPT API Dashboard.
-Connect your crypto wallet to authenticate.
-Create an API Key
-Click on "Create New Key".
-Copy and securely store the secret phrase, as it will be required for authentication.
-Purchase Credits
-Visit ChainGPT Credits.
-Buy credits as each tweet generation will consume 1 credit.
-Once you have your API key and credits, you can start using the project for automated tweet generation!
+# 📢 Automated Tweeting with ChainGPT
 
-Working Steps
-Before running the project, follow these steps to set up and execute the workflow.
-Load Twitter Access Tokens
-Before generating tweets, you need to load your Twitter Access Token and Refresh Token into the project. Use the following API call:
-Request:
+## 🚀 Project Overview
+This open-source project provides two key features for automated tweet generation and posting:
+
+### 🕒 Scheduled Tweeting with Cron Jobs
+- Users define a schedule file containing prompts and specific times for tweet generation.
+- A cron job processes the schedule, generates tweets based on the provided prompt, and automatically publishes them.
+
+### 🔗 Automated Tweeting via ChainGPT Webhooks
+- Users register their webhook with the ChainGPT portal and subscribe to specific news categories.
+- When ChainGPT publishes news in a subscribed category, the project receives a relevant tweet and posts it automatically.
+
+---
+## 🛠 Requirements
+- A **ChainGPT API key** is required for authentication and access to the service.
+- **Each tweet generation consumes 1 credit.**
+
+---
+## 🔑 How to Generate a ChainGPT API Key
+To use this project, follow these steps:
+
+### 1️⃣ Access the API Dashboard
+- Go to the **[ChainGPT API Dashboard](https://app.chaingpt.org/apidashboard)**.
+- Connect your crypto wallet to authenticate.
+
+### 2️⃣ Create an API Key
+- Click **"Create New Key"**.
+- Copy and securely store the secret phrase (required for authentication).
+
+### 3️⃣ Purchase Credits
+- Visit **[ChainGPT Credits](https://app.chaingpt.org/addcredits)**.
+- Buy credits as **each tweet generation consumes 1 credit**.
+
+Once you have your API key and credits, you're ready to start! 🚀
+
+---
+## 🔄 Working Steps
+Before running the project, follow these setup steps.
+
+### 🔑 Load Twitter Access Tokens
+Before generating tweets, you need to load your Twitter Access Token and Refresh Token into the project.
+
+**Request:**
+```http
 POST {projectUrl}/api/tokens/
-Body:
+```
+**Body:**
+```json
 {
-"accessToken": "<your_access_token>",
-"refreshToken": "<your_refresh_token>"
+  "accessToken": "<your_access_token>",
+  "refreshToken": "<your_refresh_token>"
 }
+```
+Once done, the project can authenticate and post tweets on your behalf.
 
-Once this is done, the project will be able to authenticate and post tweets on your behalf.
-
-Flow 1: Tweet Using Cron Job
-In this workflow, tweets are generated based on predefined prompts and times stored in a JSON file.
-Step 2: Define Your Schedule
-Create a schedule.json file with the following format:
+---
+## 🔁 Tweeting Workflows
+### 📅 Flow 1: Scheduled Tweeting via Cron Job
+#### 1️⃣ Define Your Schedule
+Create a `schedule.json` file in the following format:
+```json
 {
-"14:30": "The future of AI",
-"18:00": "Crypto markets are evolving"
+  "14:30": "The future of AI",
+  "18:00": "Crypto markets are evolving"
 }
+```
+- **Time:** Must be in **UTC format** (`HH:MM`).
+- **Prompt:** The text used to generate the tweet.
 
-time: Must be in UTC format (HH:MM).
-prompt: The text that will be used to generate the tweet.
-Step 3: Run the Cron Job
-The cron job will execute automatically at the specified times, generating tweets using chainGPT tweet generation feature and publishing them to Twitter.
+#### 2️⃣ Run the Cron Job
+The cron job executes automatically at the scheduled times, generating tweets using ChainGPT's tweet generation feature and publishing them.
 
-Flow 2: Subscribe to ChainGPT Categories
-In this workflow, users can subscribe to specific categories available on ChainGPT. When a news article is published in a subscribed category, the project will automatically generate a tweet and post it to Twitter.
-Step 1: Get Available Categories
-To see all available categories and your currently subscribed ones, use the following API:
-Request:
-GET https://appapi.chaingpt.dev/category-subscription/
+---
+### 🔔 Flow 2: Tweeting via ChainGPT News Categories
+#### 1️⃣ Get Available Categories
+Retrieve all available categories and your subscribed ones.
 
-Headers:
+**Request:**
+```http
+GET https://webapi.chaingpt.org/category-subscription/
+```
+**Headers:**
+```json
 {
-"api-key": "<your_api_key>"
+  "api-key": "<your_api_key>"
 }
-This will return a list of all categories along with the categories you are currently subscribed to.
+```
+This returns a list of categories along with your current subscriptions.
 
-Step 2: Subscribe to Categories
-To subscribe to one or more categories, send a POST request with the category IDs you want to subscribe to.
-Request:
-POST https://appapi.chaingpt.dev/category-subscription/subscribe
+#### 2️⃣ Subscribe to Categories
+To subscribe, send a `POST` request with the category IDs.
 
-Headers:
+**Request:**
+```http
+POST https://webapi.chaingpt.org/category-subscription/subscribe
+```
+**Headers:**
+```json
 {
-"api-key": "<your_api_key>"
+  "api-key": "<your_api_key>"
 }
-Body:
+```
+**Body:**
+```json
 {
-"categoryIds": [2, 3]
+  "categoryIds": [2, 3]
 }
-Here, 2 and 3 correspond to category id you want to tweet about
-Step 3: Register Webhook with ChainGPT
-After subscribing to categories, you must register your webhook with ChainGPT. This ensures that whenever a news article is published in a subscribed category, the webhook receives the update and automatically generates a tweet.
-Register Webhook
-Send a POST request to your project's webhook registration route:
-Request:
+```
+*(IDs 2 and 3 correspond to the categories you want to tweet about.)*
+
+#### 3️⃣ Register Webhook with ChainGPT
+Register your webhook with ChainGPT to receive updates.
+
+**Request:**
+```http
 POST {base_url_of_your_project}/api/webhook/register
-Body:
+```
+**Body:**
+```json
 {
-"url": "{base_url_of_your_project}/api/webhook/"
+  "url": "{base_url_of_your_project}/api/webhook/"
 }
-How It Works:
-This registers your webhook URL with ChainGPT.
-When ChainGPT publishes news in your subscribed categories, it will send a POST request to your webhook.
-The project will process the incoming tweet and post it to Twitter.
-With this setup, the entire process is automated, ensuring real-time tweet updates for the latest news in your subscribed categories.
+```
+#### 🔹 How It Works:
+- This registers your webhook URL with ChainGPT.
+- When ChainGPT publishes news in your subscribed categories, it sends a `POST` request to your webhook.
+- The project processes the tweet and posts it to Twitter.
 
-Project Setup Guide 🚀
-Prerequisites
-Ensure you have the following installed on your system:
-Node.js (Latest LTS recommended)
-npm (Installed with Node.js)
-How to Run the Project
-Follow these steps to set up and start the project:
+🔹 *With this setup, the entire process is automated, ensuring real-time tweet updates for the latest news in your subscribed categories!*
 
-1.  Install Dependencies
-    npm install
+---
+## 📌 Project Setup Guide
+### ✅ Prerequisites
+Ensure the following are installed on your system:
+- **Node.js** (Latest LTS recommended)
+- **npm** (Installed with Node.js)
 
-2.  Start the Project
-    Use the following command to start the project:
-    npm run start
+### 📥 How to Run the Project
+#### 1️⃣ Install Dependencies
+```bash
+npm install
+```
+#### 2️⃣ Start the Project
+```bash
+npm run start
+```
+#### 3️⃣ Configure Environment Variables
+Create a `.env` file in the project's root directory and add the following fields:
+```ini
+CLIENT_ID=<your_client_id>
+CLIENT_SECRET=<your_client_secret>
+ENCRYPTION_KEY=<your_encryption_key>
+IV=<characters>
+ENCRYPTION_SALT=<encryption_salt>
+WEB_URL=https://webapi.chaingpt.org
+```
+#### 4️⃣ Run the Project
+Once the `.env` file is set up, restart the project to load environment variables.
 
-3.  Configure Environment Variables
-    Create a .env file in the project's root directory and add the following fields:
-    CLIENT_ID=<your client id>
-    CLIENT_SECRET=<your client secret>
-    ENCRYPTION_KEY=<your encryption key>
-    IV=<characters>
-    ENCRYPTION_SALT=<encryption salt>
-    WEB_URL=https://appapi.chaingpt.dev
+🎉 **Now your project is up and running!** 🚀
 
-4.  Run the Project
-    Once the .env file is set up, restart the project to ensure the environment variables are loaded.
-    Now your project should be up and running! 🚀
+---
+## 🤝 Contributing
+We welcome contributions! If you'd like to contribute, please follow these steps:
+1. **Fork the repository**.
+2. **Create a new branch** (`git checkout -b feature-branch`).
+3. **Make your changes and commit** (`git commit -m 'Add new feature'`).
+4. **Push to the branch** (`git push origin feature-branch`).
+5. **Open a Pull Request**.
+
+---
+## 📧 Support
+If you encounter any issues or need assistance, feel free to reach out via GitHub issues.
+
+👨‍💻 **Happy Coding!** 🚀
+
