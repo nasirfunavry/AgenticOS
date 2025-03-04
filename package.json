@@ -11,7 +11,7 @@
     "format": "prettier --write 'src/**/*.ts'",
     "test": "bun test"
   },
-  "author": "soroojshehryar01@gmail.com",
+  "author": "ChainGPT",
   "license": "ISC",
   "description": "",
   "dependencies": {
