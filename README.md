@@ -160,16 +160,6 @@ Once the `.env` file is set up, restart the project to load environment variable
 
 🎉 **Now your project is up and running!** 🚀
 
----
-## 🤝 Contributing
-We welcome contributions! If you'd like to contribute, please follow these steps:
-1. **Fork the repository**.
-2. **Create a new branch** (`git checkout -b feature-branch`).
-3. **Make your changes and commit** (`git commit -m 'Add new feature'`).
-4. **Push to the branch** (`git push origin feature-branch`).
-5. **Open a Pull Request**.
-
----
 ## 📧 Support
 If you encounter any issues or need assistance, feel free to reach out via GitHub issues.
 
