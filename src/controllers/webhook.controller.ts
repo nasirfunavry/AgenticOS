@@ -5,7 +5,7 @@ import { uploadTwitterPostTweet } from '../services/twitter.service';
 import { ApiResponse, TweetWebhookRequest, WebhookRegistrationRequest } from '../types';
 
 // ChainGPT API URL
-const CHAINGPT_API_URL = 'https://api.chaingpt.org';
+const CHAINGPT_API_URL = 'https://webapi.chaingpt.org';
 
 /**
  * Register a webhook with ChainGPT
@@ -67,12 +67,15 @@ export const tweetWebhook = async (c: Context): Promise<Response> => {
             }, 400);
         }
 
-        const response = await uploadTwitterPostTweet(tweet);
+         let tweetText = tweet;
+        //  let tweetText = tweet.slice(0, 270);
+
+        const response = await uploadTwitterPostTweet(tweetText);
 
         return c.json<ApiResponse>({
             success: true,
             message: 'Tweet posted successfully',
-            data: { tweet, response }
+            data: { tweetText, response }
         });
     } catch (error) {
         console.error('Error posting tweet via webhook:', error);

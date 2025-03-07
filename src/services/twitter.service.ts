@@ -4,7 +4,7 @@ import { loadTokens, saveTokens } from '../utils/encryption';
 import { TwitterOAuthResponse, TwitterPostResponse } from '../types';
 
 // ChainGPT API URL
-const CHAINGPT_API_URL = 'https://api.chaingpt.org';
+const CHAINGPT_API_URL = 'https://webapi.chaingpt.org';
 
 /**
  * Get Twitter access token by using an existing refresh token
@@ -87,10 +87,9 @@ export const refreshAccessToken = async (refreshToken: string): Promise<{
 export const getTextForTweet = async (prompt: string): Promise<string> => {
     try {
         const response = await axios.post(
-            `${CHAINGPT_API_URL}/completions`,
+            `${CHAINGPT_API_URL}/tweet-generator`,
             {
                 prompt,
-                max_tokens: 500,
             },
             {
                 headers: {
@@ -99,8 +98,9 @@ export const getTextForTweet = async (prompt: string): Promise<string> => {
                 },
             }
         );
-
-        return response.data.text;
+        let tweetText = response.data.tweet
+        // let tweetText = response.data.tweet.slice(0, 270); // use this for base twitter api key 
+        return tweetText;
     } catch (error) {
         console.error('Error generating tweet text:', error);
         throw new Error('Failed to generate tweet content using ChainGPT API');
