@@ -11,7 +11,7 @@ This open-source project provides two key features for automated tweet generatio
 
 ## Features
 
-- 🤖 AI-powered tweet generation using ChainGPT
+- 🤖 AI-powered tweet generation using ChainGPT's "Web3 LLM" API.
 - 📅 Scheduled tweets based on configurable prompts
 - 🔒 Secure token storage with encryption
 - 🌐 Webhook support for external integrations
