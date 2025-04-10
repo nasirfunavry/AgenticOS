@@ -1,4 +1,4 @@
-# ChainGPT Twitter AI Agent
+# AgenticOS - Twitter AI Agent for Web3 - by ChainGPT
 
 A TypeScript-based Twitter Agent that automatically generates and posts tweets on a schedule using AI. Built with Hono, TypeScript, and Bun runtime.
 
@@ -31,7 +31,7 @@ This open-source project provides two key features for automated tweet generatio
 To use this project, follow these steps:
 
 1. **Access the API Dashboard**
-   - Go to the [ChainGPT API Dashboard](https://app.chaingpt.org/apidashboard)
+   - Go to the [Crypto AI Hub - API Dashboard](https://app.chaingpt.org/apidashboard)
    - Connect your crypto wallet to authenticate
 
 2. **Create an API Key**
