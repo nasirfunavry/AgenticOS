@@ -1,6 +1,12 @@
-# AgenticOS - Twitter AI Agent for Web3 - by ChainGPT
+# AgenticOS – Your AI Agent for Web3 on X (Twitter) - by ChainGPT
 
-A TypeScript-based Twitter Agent that automatically generates and posts tweets on a schedule using AI. Built with Hono, TypeScript, and Bun runtime.
+Launch your own intelligent AI Agent on X (formerly Twitter) — purpose-built for Web3.
+From real-time market research and breaking crypto news to token analysis and community engagement, AgenticOS automates it all.
+Empower your digital presence with 24/7 AI performance, tailored to your goals.
+
+Demo: https://x.com/ChainGPTAI 
+
+*** A TypeScript-based Twitter Agent that automatically generates and posts tweets on a schedule using AI. Built with Hono, TypeScript, and Bun runtime.
 
 ## 🚀 Project Overview
 
