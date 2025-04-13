@@ -1,301 +1,194 @@
-# AgenticOS – Your AI Agent for Web3 on X (Twitter) - by ChainGPT
+# AgenticOS – Your AI Agent for Web3 on X (Twitter)
 
-Launch your own intelligent AI Agent on X (formerly Twitter) — purpose-built for Web3.
-From real-time market research and breaking crypto news to token analysis and community engagement, AgenticOS automates it all.
-Empower your digital presence with 24/7 AI performance, tailored to your goals.
+**Built by ChainGPT**
 
-Demo: https://x.com/ChainGPTAI 
+AgenticOS lets you effortlessly create and deploy your own intelligent AI agent on X (formerly Twitter)—purpose-built for the Web3 ecosystem. Automate tasks like real-time market research, breaking crypto news, token analysis, and community engagement, enhancing your digital presence with 24/7 AI-driven insights.
 
-*** A TypeScript-based Twitter Agent that automatically generates and posts tweets on a schedule using AI. Built with Hono, TypeScript, and Bun runtime.
+📌 **Live Demo**: [ChainGPT AI on X](https://x.com/ChainGPTAI)
 
-## 🚀 Project Overview
+---
 
-This open-source project provides two key features for automated tweet generation and posting:
+## 🚀 Overview
 
-- 🕒 **Scheduled Tweeting with Cron Jobs**: Define a schedule file containing prompts and specific times for tweet generation. A cron job processes the schedule, generates tweets based on the provided prompt, and automatically publishes them.
-- 🔗 **Automated Tweeting via ChainGPT Webhooks**: Register your webhook with the ChainGPT portal and subscribe to specific news categories. When ChainGPT publishes news in a subscribed category, the project receives a relevant tweet and posts it automatically.
+AgenticOS is a TypeScript-based AI agent that automates tweet generation and publishing, leveraging ChainGPT's advanced Web3 LLM API and the ultra-fast Bun runtime. Built for ease of integration and secure performance.
 
-## Features
+### 🔥 Key Features
 
-- 🤖 AI-powered tweet generation using ChainGPT's "Web3 LLM" API.
-- 📅 Scheduled tweets based on configurable prompts
-- 🔒 Secure token storage with encryption
-- 🌐 Webhook support for external integrations
-- 🔄 Automatic token refresh for Twitter API
-- 🚀 Ultra-fast Bun runtime for improved performance
-- 📊 TypeScript for type safety and better developer experience
+- **AI-powered Tweet Generation** using ChainGPT's Web3 LLM
+- **Scheduled Automated Tweets** via configurable Cron jobs
+- **Webhook Integration** with ChainGPT for automatic real-time updates
+- **Secure Token Storage** with encryption
+- **Automatic Twitter Token Refresh** (OAuth 2.0)
+- **TypeScript** for enhanced developer experience and type safety
+- **Ultra-fast Bun Runtime** for optimal performance
 
-## 🛠 Requirements
+---
 
-- [Bun](https://bun.sh) 1.0+ runtime (faster alternative to Node.js)
+## ⚙️ Requirements
+
+- [Bun Runtime](https://bun.sh) (v1.0 or newer)
 - Twitter API credentials (OAuth 2.0)
-- A ChainGPT API key for authentication and access to the service
-- Credits for tweet generation (each tweet consumes 1 credit)
+- ChainGPT API Key ([Get one here](https://app.chaingpt.org/apidashboard))
+- ChainGPT Credits ([Purchase credits](https://app.chaingpt.org/addcredits))
 
-## 🔑 How to Generate a ChainGPT API Key
+Each generated tweet consumes 1 ChainGPT credit.
 
-To use this project, follow these steps:
+---
 
-1. **Access the API Dashboard**
-   - Go to the [Crypto AI Hub - API Dashboard](https://app.chaingpt.org/apidashboard)
-   - Connect your crypto wallet to authenticate
+## 🔑 Quick Start
 
-2. **Create an API Key**
-   - Click "Create New Key"
-   - Copy and securely store the secret phrase (required for authentication)
+### Step 1: Clone and Set Up
+```bash
+git clone https://github.com/yourusername/twitter-ai-agent.git
+cd twitter-ai-agent
 
-3. **Purchase Credits**
-   - Visit [ChainGPT Credits](https://app.chaingpt.org/addcredits)
-   - Buy credits as each tweet generation consumes 1 credit
+# Install Bun runtime
+curl -fsSL https://bun.sh/install | bash
 
-Once you have your API key and credits, you're ready to start! 🚀
+# Install project dependencies
+bun install
 
-## Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/twitter-ai-agent.git
-   cd twitter-ai-agent
-   ```
-
-2. Install Bun if you don't have it already:
-   ```bash
-   curl -fsSL https://bun.sh/install | bash
-   ```
-
-3. Install dependencies with Bun:
-   ```bash
-   bun install
-   ```
-
-4. Create a `.env` file based on the example:
-   ```bash
-   cp .env.example .env
-   ```
-
-5. Fill in your environment variables in the `.env` file:
-   ```
-   # Server Configuration
-   PORT=8000
-   NODE_ENV=development
-
-   # Twitter API Credentials
-   CLIENT_ID=your_twitter_client_id
-   CLIENT_SECRET=your_twitter_client_secret
-
-   # Encryption Settings
-   ENCRYPTION_KEY=your_32_character_encryption_key
-   ENCRYPTION_SALT=your_hex_encryption_salt
-   IV=your_hex_initialization_vector
-
-   # ChainGPT API
-   CHAINGPT_API_KEY=your_chaingpt_api_key
-   ```
-
-## 🔄 Working Steps
-
-Before running the project, follow these setup steps.
-
-### 🔑 Load Twitter Access Tokens
-
-Before generating tweets, you need to load your Twitter Access Token and Refresh Token into the project.
-
-**Request:**
-```
-POST {projectUrl}/api/tokens/
+# Configure your environment
+cp .env.example .env
 ```
 
-**Body:**
-```json
-{
-  "accessToken": "<your_access_token>",
-  "refreshToken": "<your_refresh_token>"
-}
+### Step 2: Configure `.env`
+
+Update `.env` with your details:
+```bash
+PORT=8000
+NODE_ENV=development
+
+CLIENT_ID=your_twitter_client_id
+CLIENT_SECRET=your_twitter_client_secret
+
+ENCRYPTION_KEY=your_32_character_encryption_key
+ENCRYPTION_SALT=your_hex_encryption_salt
+IV=your_hex_initialization_vector
+
+CHAINGPT_API_KEY=your_chaingpt_api_key
 ```
 
-Once done, the project can authenticate and post tweets on your behalf.
+---
 
-### 🔁 Tweeting Workflows
-
-#### 📅 Flow 1: Scheduled Tweeting via Cron Job
-
-1. **Define Your Schedule**
-   Create a `schedule.json` file in the following format:
-
-   ```json
-   {
-     "14:30": "The future of AI",
-     "18:00": "Crypto markets are evolving"
-   }
-   ```
-   - Time: Must be in UTC format (HH:MM)
-   - Prompt: The text used to generate the tweet
-
-2. **Run the Cron Job**
-   The cron job executes automatically at the scheduled times, generating tweets using ChainGPT's tweet generation feature and publishing them.
-
-#### 🔔 Flow 2: Tweeting via ChainGPT News Categories
-
-1. **Get Available Categories**
-   Retrieve all available categories and your subscribed ones.
-
-   **Request:**
-   ```
-   GET https://webapi.chaingpt.org/category-subscription/
-   ```
-
-   **Headers:**
-   ```json
-   {
-     "api-key": "<your_api_key>"
-   }
-   ```
-   This returns a list of categories along with your current subscriptions.
-
-2. **Subscribe to Categories**
-   To subscribe, send a POST request with the category IDs.
-
-   **Request:**
-   ```
-   POST https://webapi.chaingpt.org/category-subscription/subscribe
-   ```
-
-   **Headers:**
-   ```json
-   {
-     "api-key": "<your_api_key>"
-   }
-   ```
-
-   **Body:**
-   ```json
-   {
-     "categoryIds": [2, 3]
-   }
-   ```
-   (IDs 2 and 3 correspond to the categories you want to tweet about.)
-
-3. **Register Webhook with ChainGPT**
-   Register your webhook with ChainGPT to receive updates.
-
-   **Request:**
-   ```
-   POST {base_url_of_your_project}/api/webhook/register
-   ```
-
-   **Body:**
-   ```json
-   {
-     "url": "{base_url_of_your_project}/api/webhook/"
-   }
-   ```
-
-   **How It Works:**
-   - This registers your webhook URL with ChainGPT
-   - When ChainGPT publishes news in your subscribed categories, it sends a POST request to your webhook
-   - The project processes the tweet and posts it to Twitter
-
-With this setup, the entire process is automated, ensuring real-time tweet updates for the latest news in your subscribed categories!
-
-## Usage
+## 🚩 Usage
 
 ### Development Mode
-
 ```bash
 bun dev
 ```
 
 ### Production Mode
-
 ```bash
 bun build
 bun start
 ```
 
-## API Endpoints
+---
 
-### Token Management
+## 📅 Automated Tweeting Workflows
 
-- **POST /api/tokens**
-  - Load Twitter API tokens
-  - Body: `{ "accessToken": "your_access_token", "refreshToken": "your_refresh_token" }`
+### Workflow 1: Scheduled Tweeting (Cron)
 
-### Webhook Management
+Define your schedule in `data/schedule.json`:
+```json
+{
+  "14:30": "The future of AI in Web3",
+  "18:00": "Crypto markets update"
+}
+```
 
-- **POST /api/webhook/register**
-  - Register a webhook with ChainGPT
-  - Body: `{ "url": "https://your-webhook-url.com" }`
+Tweets are auto-generated and posted according to this schedule (UTC).
 
-- **POST /api/webhook**
-  - Receive a tweet from a webhook and post it
-  - Body: `{ "tweet": "Your tweet content" }`
+### Workflow 2: ChainGPT Webhook for Live News
 
-## Project Structure
+**Subscribe to Categories:**
+- Get available categories:
+```bash
+GET https://webapi.chaingpt.org/category-subscription/
+```
+
+- Subscribe to categories:
+```bash
+POST https://webapi.chaingpt.org/category-subscription/subscribe
+
+Body: { "categoryIds": [2, 3] }
+```
+
+**Register Webhook:**
+
+Register your webhook to automatically post updates:
+```bash
+POST {your_project_url}/api/webhook/register
+
+Body: { "url": "{your_project_url}/api/webhook/" }
+```
+
+AgenticOS will automatically post tweets from ChainGPT news updates.
+
+---
+
+## 📚 Project Structure
 
 ```
 twitter-ai-agent/
-├── data/                  # Data storage
-│   └── schedule.json      # Tweet schedule configuration
-├── src/                   # Source code
-│   ├── config/            # Configuration
-│   │   └── env.ts         # Environment variables validation
-│   ├── controllers/       # API controllers
-│   │   ├── token.controller.ts
-│   │   └── webhook.controller.ts
-│   ├── jobs/              # Scheduled jobs
-│   │   └── tweet.job.ts   # Tweet scheduling
-│   ├── routes/            # API routes
-│   │   ├── index.ts       # Main router
-│   │   ├── token.routes.ts
-│   │   └── webhook.routes.ts
-│   ├── services/          # Business logic
-│   │   └── twitter.service.ts
-│   ├── types/             # TypeScript type definitions
-│   │   └── index.ts
-│   ├── utils/             # Utility functions
-│   │   └── encryption.ts  # Token encryption
-│   └── index.ts           # Application entry point
-├── .env                   # Environment variables
-├── .env.example           # Example environment variables
-├── package.json           # Dependencies and scripts
-└── tsconfig.json          # TypeScript configuration
+├── data/
+│   └── schedule.json
+├── src/
+│   ├── config/
+│   ├── controllers/
+│   ├── jobs/
+│   ├── routes/
+│   ├── services/
+│   ├── types/
+│   ├── utils/
+│   └── index.ts
+├── .env.example
+├── package.json
+└── tsconfig.json
 ```
 
-## Why Bun?
+---
 
-This project uses Bun instead of Node.js for several key benefits:
+## 🌐 Why Choose Bun?
 
-- **Improved Performance**: Significantly faster startup and execution times
-- **Built-in TypeScript Support**: No need for separate compilation steps
-- **Modern JavaScript Features**: First-class support for ESM and top-level await
-- **Simplified Development**: Built-in tools for testing, bundling, and running
-- **Compatible with Node.js**: Works with most npm packages
+- 🚀 **Superior Performance**: Faster execution & startup
+- 🛠 **Built-in TypeScript & ESM Support**
+- 🎯 **Simplified Development**: Integrated tools for testing & bundling
+- 📦 **Compatible with npm packages**
 
-## Security
+---
 
-- All Twitter tokens are encrypted using Web Crypto API
-- Environment variables are validated at startup
-- Proper error handling throughout the application
+## 🔐 Security
 
-## Contributing
+- Secure encryption of Twitter tokens
+- Environment variable validation
+- Robust error handling
 
-1. Fork the repository
-2. Create your feature branch: `git checkout -b feature/my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin feature/my-new-feature`
-5. Submit a pull request
+---
 
-## License
+## 🤝 Contributing
 
-ISC
+Contributions are welcome! Follow these steps:
 
-## Author
+1. Fork this repository.
+2. Create a branch: `git checkout -b feature/my-new-feature`
+3. Commit changes: `git commit -am 'Add feature'`
+4. Push changes: `git push origin feature/my-new-feature`
+5. Open a Pull Request.
 
-ChainGPT 
+---
+
+## 📜 License
+
+**ISC**
+
+## 🧑‍💻 Author
+
+**ChainGPT**
 
 ## 📧 Support
 
-If you encounter any issues or need assistance, feel free to reach out via GitHub issues.
+Report issues via [GitHub Issues](https://github.com/yourusername/twitter-ai-agent/issues).
 
-👨‍💻 Happy Coding! 🚀
-
+🚀 **Happy Coding!**
