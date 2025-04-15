@@ -27,7 +27,7 @@ AgenticOS is a TypeScript-based AI agent that automates tweet generation and pub
 ## ⚙️ Requirements
 
 - [Bun Runtime](https://bun.sh) (v1.0 or newer)
-- Twitter API credentials (OAuth 2.0)
+- Twitter API credentials (OAuth 2.0) - for free accounts please refer to character limit per tweet
 - ChainGPT API Key ([Get one here](https://app.chaingpt.org/apidashboard))
 - ChainGPT Credits ([Purchase credits](https://app.chaingpt.org/addcredits))
 
@@ -61,8 +61,8 @@ Update `.env` with your details:
 PORT=8000
 NODE_ENV=development
 
-TWITTER_CLIENT_ID=your_twitter_client_id
-TWITTER_CLIENT_SECRET=your_twitter_client_secret
+TWITTER_CLIENT_ID=your_twitter_client_id  # generated from Twitter developer portal
+TWITTER_CLIENT_SECRET=your_twitter_client_secret # generated from Twitter developer portal
 
 ENCRYPTION_KEY=your_32_character_encryption_key
 ENCRYPTION_SALT=your_hex_encryption_salt
@@ -101,175 +101,7 @@ POST <your_project_url>/api/tokens
 
 ### Generate access and refresh tokens
 
-If you require quick code to generate twitter tokens then use below code
-
-```bash
-# Imports
-import express from "express";
-import axios from "axios";
-import crypto from "crypto";
-import querystring from "querystring";
-import session from "express-session";
-import { Buffer } from "buffer";
-```
-
-after downloading and importing packages we need to make some necessary configurations
-
-```bash
-# congigurations
-type Request = express.Request;
-type Response = express.Response;
-
-declare module "express-session" {
-  interface Session {
-    codeVerifier: string;
-  }
-}
-
-interface TwitterTokens {
-  access_token: string;
-  refresh_token: string;
-}
-
-# Configuration
-const config = {
-  clientId: "your client id",
-  clientSecret: "your client secret",
-  redirectUri: "redirect url",
-  port: 8000,
-  sessionSecret: "session secret",
-};
-
-# Initialize Express app
-const app = express();
-
-# Session middleware
-app.use(
-  session({
-    secret: config.sessionSecret,
-    resave: false,
-    saveUninitialized: true,
-  })
-);
-
-```
-
-Now we setup generatePKCE
-
-```bash
-# Generate PKCE code verifier and challenge
-const generatePKCE = (): { codeVerifier: string; codeChallenge: string } => {
-  const codeVerifier = crypto.randomBytes(32).toString("base64url");
-  const codeChallenge = crypto
-    .createHash("sha256")
-    .update(codeVerifier)
-    .digest("base64url");
-  return { codeVerifier, codeChallenge };
-};
-```
-
-Following login endpoint can be used to login to twitter, after that login tokens will be generated in callcaback endpoint
-
-```bash
-# Login route - initiates OAuth flow
-app.get("/login", (req: Request, res: Response): void => {
-  const { codeVerifier, codeChallenge } = generatePKCE();
-  const state = crypto.randomBytes(16).toString("hex");
-
-  # Store code verifier in session
-  req.session.codeVerifier = codeVerifier;
-
-  const authorizationUrl = `https://twitter.com/i/oauth2/authorize?${querystring.stringify(
-    {
-      response_type: "code",
-      client_id: config.clientId,
-      redirect_uri: config.redirectUri,
-      scope: "tweet.read users.read tweet.write offline.access",
-      state,
-      code_challenge: codeChallenge,
-      code_challenge_method: "S256",
-    }
-  )}`;
-
-  res.redirect(authorizationUrl);
-});
-```
-
-follwoing callback will be called after /login
-
-```bash
-app.get("/callback", async (req: Request, res: Response): Promise<void> => {
-  const code = req.query.code as string;
-  const codeVerifier = req.session.codeVerifier;
-
-  if (!code || !codeVerifier) {
-    res.status(400).send("Authorization failed: Missing code or verifier");
-    return;
-  }
-
-  const basicAuth = Buffer.from(
-    `${config.clientId}:${config.clientSecret}`
-  ).toString("base64");
-
-  try {
-    const response = await axios.post<TwitterTokens>(
-      "https://api.twitter.com/2/oauth2/token",
-      querystring.stringify({
-        code,
-        client_id: config.clientId,
-        redirect_uri: config.redirectUri,
-        code_verifier: codeVerifier,
-        grant_type: "authorization_code",
-      }),
-      {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          Authorization: `Basic ${basicAuth}`,
-        },
-      }
-    );
-
-    const { access_token, refresh_token } = response.data;
-    console.log(
-      `Access and refresh tokens received: ${JSON.stringify(
-        { access_token, refresh_token },
-        null,
-        2
-      )}`
-    );
-    res.send(
-      `Access and refresh tokens received: ${JSON.stringify(
-        { access_token, refresh_token },
-        null,
-        2
-      )}`
-    );
-  } catch (error: any) {
-    if (axios.isAxiosError(error)) {
-      res
-        .status(500)
-        .send(
-          `Error during the token exchange: ${JSON.stringify(
-            error.response?.data || error.message
-          )}`
-        );
-    } else {
-      res.status(500).send("An unexpected error occurred");
-    }
-  }
-});
-```
-
-Starting server
-
-```bash
-# Start the server
-app.listen(config.port, () => {
-  console.log(
-    `Access and Refresh Token Generator listening on port ${config.port}`
-  );
-});
-```
+You can generate Twitter access and refresh tokens using the OAuth 2.0 flow. For detailed instructions, please refer to [Twitter Token Generation Guide](./twitterTokenGeneration.md).
 
 ## 📅 Automated Tweeting Workflows
 
