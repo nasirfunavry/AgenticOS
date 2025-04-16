@@ -64,9 +64,9 @@ NODE_ENV=development
 TWITTER_CLIENT_ID=your_twitter_client_id  # generated from Twitter developer portal
 TWITTER_CLIENT_SECRET=your_twitter_client_secret # generated from Twitter developer portal
 
-ENCRYPTION_KEY=your_32_character_encryption_key
-ENCRYPTION_SALT=your_hex_encryption_salt
-ENCRYPTION_IV=your_hex_initialization_vector
+ENCRYPTION_KEY=your_32_character_encryption_key # set a value and keep it secure
+ENCRYPTION_SALT=your_hex_encryption_salt # set a value and keep it secure
+ENCRYPTION_IV=your_hex_initialization_vector # set a value and keep it secure
 
 CHAINGPT_API_KEY=your_chaingpt_api_key
 ```
@@ -86,11 +86,15 @@ bun start
 
 ## Provide Twitter Access and Refresh Tokens
 
+### Generate access and refresh tokens
+
+You can generate Twitter access and refresh tokens using the OAuth 2.0 flow. For detailed instructions, please refer to [Twitter Token Generation Guide](./twitterTokenGeneration.md).
+
 ### Add tokens to app
 
 ```bash
 # Add Twitter tokens to the application
-POST <your_project_url>/api/tokens
+POST <https://your-domain.com>/api/tokens
 
 # Request body
 {
@@ -98,10 +102,6 @@ POST <your_project_url>/api/tokens
   "refreshToken": "your_refresh_token"
 }
 ```
-
-### Generate access and refresh tokens
-
-You can generate Twitter access and refresh tokens using the OAuth 2.0 flow. For detailed instructions, please refer to [Twitter Token Generation Guide](./twitterTokenGeneration.md).
 
 ## 📅 Automated Tweeting Workflows
 
@@ -141,9 +141,9 @@ Body: { "categoryIds": [2, 3] }
 Register your webhook to automatically post updates:
 
 ```bash
-POST {your_project_url}/api/webhook/register
+POST {https://your-domain.com}/api/webhook/register
 
-Body: { "url": "{your_project_url}/api/webhook/" }
+Body: { "url": "{https://your-domain.com}/api/webhook/" }
 ```
 
 AgenticOS will automatically post tweets from ChainGPT news updates.

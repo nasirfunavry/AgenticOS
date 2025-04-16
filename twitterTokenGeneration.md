@@ -60,11 +60,11 @@ interface TwitterTokens {
 ```typescript
 // Configuration
 const config = {
-  clientId: "your_twitter_client_id",
-  clientSecret: "your_twitter_client_secret",
-  redirectUri: "http://localhost:8000/callback",
+  clientId: "your_twitter_client_id", //twitter client id
+  clientSecret: "your_twitter_client_secret", // twitter secret
+  redirectUri: "http://localhost:8000/callback", //change prot or domain according to your configurations
   port: 8000,
-  sessionSecret: "your_session_secret",
+  sessionSecret: "your_session_secret", //set a value and keep it secure
 };
 
 // Initialize Express app
