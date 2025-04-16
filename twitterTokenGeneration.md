@@ -62,7 +62,7 @@ interface TwitterTokens {
 const config = {
   clientId: "your_twitter_client_id", //twitter client id
   clientSecret: "your_twitter_client_secret", // twitter secret
-  redirectUri: "http://localhost:8000/callback", //change prot or domain according to your configurations
+  redirectUri: "http://localhost:8000/callback", //change port or domain according to your configurations
   port: 8000,
   sessionSecret: "your_session_secret", //set a value and keep it secure
 };
