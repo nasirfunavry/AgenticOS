@@ -126,13 +126,20 @@ Tweets are auto-generated and posted according to this schedule (UTC).
 
 ```bash
 GET https://webapi.chaingpt.org/category-subscription/
+Headers:
+{
+    "api-key": "<your_chainGPT_api_key>"
+}
 ```
 
 - Subscribe to categories:
 
 ```bash
 POST https://webapi.chaingpt.org/category-subscription/subscribe
-
+Headers:
+{
+    "api-key": "<your_chainGPT_api_key>"
+}
 Body: { "categoryIds": [2, 3] }
 ```
 
@@ -141,8 +148,11 @@ Body: { "categoryIds": [2, 3] }
 Register your webhook to automatically post updates:
 
 ```bash
-POST {https://your-domain.com}/api/webhook/register
-
+POST https://your-domain.com}/api/webhook/register
+Headers:
+{
+    "api-key": "<your_chainGPT_api_key>"
+}
 Body: { "url": "{https://your-domain.com}/api/webhook/" }
 ```
 

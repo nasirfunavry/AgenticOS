@@ -62,8 +62,8 @@ interface TwitterTokens {
 const config = {
   clientId: "your_twitter_client_id", //twitter client id
   clientSecret: "your_twitter_client_secret", // twitter secret
-  redirectUri: "http://localhost:8000/callback", //change port or domain according to your configurations
-  port: 8000,
+  redirectUri: "http://localhost:3000/callback", //change port or domain according to your configurations
+  port: 3000,
   sessionSecret: "your_session_secret", //set a value and keep it secure
 };
 
@@ -209,12 +209,12 @@ Save all the code above to a file named `twitter-token-generator.ts`.
 
 ```bash
 # Run the application
-node --loader ts-node/esm twitter-token-generator.ts
+npx ts-node twitter-token-generator.ts
 ```
 
 ## 🔄 Usage Flow
 
-1. Visit `http://localhost:8000/login` in your browser
+1. Visit `http://localhost:3000/login` in your browser
 2. You'll be redirected to Twitter's authorization page
 3. Log in and authorize the application
 4. You'll be redirected back to your application
