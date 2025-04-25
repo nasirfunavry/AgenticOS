@@ -1,6 +1,6 @@
 {
     "buildCommand": "bun install && bun run build",
     "devCommand": "bun run dev",
-    "framework": "vite",
-    "outputDirectory": "src"
+    "outputDirectory": "dist",
+    "framework": "nodejs"
   }
