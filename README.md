@@ -235,3 +235,5 @@ Report issues via [GitHub Issues](https://github.com/yourusername/twitter-ai-age
 
 # Deploy on Railway on One Click
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https%3A%2F%2Fgithub.com%2Fnasirfunavry%2FAgenticOS%2Ftree%2Fdev&envs=PORT%2CNODE_ENV%2CTWITTER_CLIENT_ID%2CTWITTER_CLIENT_SECRET%2CENCRYPTION_KEY%2CENCRYPTION_SALT%2CENCRYPTION_IV%2CCHAINGPT_API_KEY&optionalEnvs=PORT&PORTDefault=8000&NODE_ENVDefault=development)
+
+<!--  For deployment -->
