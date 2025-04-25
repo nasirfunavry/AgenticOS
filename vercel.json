@@ -1,6 +1,0 @@
-{
-   "buildCommand": "bun install",
-  "devCommand": "bun run dev",
-  "framework": "other"
-  }
-  
