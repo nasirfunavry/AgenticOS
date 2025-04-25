@@ -1,17 +1,10 @@
 {
-    "buildCommand": "bun install && bun run build",
+    "buildCommand": "bun install",
     "devCommand": "bun run dev",
     "outputDirectory": "dist",
-    "builds": [
-        {
-          "src": "src/index.ts",
-          "use": "@vercel/node"
-        }
-      ],
-      "routes": [
-        {
-          "src": "/(.*)",
-          "dest": "src/index.ts"
-        }
-      ]
+    "functions": {
+      "src/index.ts": {
+        "runtime": "@vercel/node@latest"
+      }
+    }
   }
