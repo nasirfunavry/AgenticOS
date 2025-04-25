@@ -1,5 +1,5 @@
 {
     "buildCommand": "bun install",
     "devCommand": "bun run dev",
-    "framework": "node"
+    "framework": "vite"
   }
