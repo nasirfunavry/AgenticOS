@@ -1,5 +1,6 @@
 {
-    "buildCommand": "bun install",
+    "buildCommand": "bun install && bun run build",
     "devCommand": "bun run dev",
-    "framework": "vite"
+    "framework": "vite",
+    "outputDirectory": "src"
   }
