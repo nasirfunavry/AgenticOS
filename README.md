@@ -227,3 +227,6 @@ Report issues via [GitHub Issues](https://github.com/yourusername/twitter-ai-age
 
 # Deploy on Render on One Click
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/nasirfunavry/AgenticOS&branch=dev)
+
+# Deploy on Vercel on One Click
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fnasirfunavry%2FAgenticOS&branch=dev)
