@@ -234,7 +234,6 @@ Report issues via [GitHub Issues](https://github.com/yourusername/twitter-ai-age
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fnasirfunavry%2FAgenticOS%2Ftree%2Fdev&env=PORT,NODE_ENV,TWITTER_CLIENT_ID,TWITTER_CLIENT_SECRET,ENCRYPTION_KEY,ENCRYPTION_SALT,ENCRYPTION_IV,CHAINGPT_API_KEY&envDescription=Add%20required%20API%20keys%20and%20secrets%20from%20Twitter%20and%20ChainGPT.%20See%20.env.example%20for%20reference.&envLink=https%3A%2F%2Fgithub.com%2Fnasirfunavry%2FAgenticOS%2Fblob%2Fdev%2F.env.example&project-name=agenticos&repository-name=AgenticOS)
 
 # Deploy on Railway on One Click
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/nasirfunavry/AgenticOS&branch=dev&envs=PORT,NODE_ENV,TWITTER_CLIENT_ID,TWITTER_CLIENT_SECRET,ENCRYPTION_KEY,ENCRYPTION_SALT,ENCRYPTION_IV,CHAINGPT_API_KEY&envDesc=Add%20required%20API%20keys%20and%20secrets%20from%20Twitter%20and%20ChainGPT.%20See%20.env.example%20for%20reference.)
-
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/project?template=https://github.com/nasirfunavry/AgenticOS&branch=dev&env=PORT,NODE_ENV,TWITTER_CLIENT_ID,TWITTER_CLIENT_SECRET,ENCRYPTION_KEY,ENCRYPTION_SALT,ENCRYPTION_IV,CHAINGPT_API_KEY&envDescription=Add%20required%20API%20keys%20and%20secrets%20from%20Twitter%20and%20ChainGPT.%20See%20.env.example%20for%20reference.)
 
 <!--  For deployment -->
