@@ -15,7 +15,7 @@ interface TwitterTokens {
 const config = {
   clientId: process.env.TWITTER_CLIENT_ID,       // Twitter OAuth2 Client ID
   clientSecret: process.env.TWITTER_CLIENT_SECRET, // Twitter OAuth2 Client Secret
-  redirectUri: "http://localhost:8000/api/login/callback", // Must match callback in Twitter app settings
+  redirectUri: "https://agenticos-app.onrender.com/api/login/callback", // Must match callback in Twitter app settings
   port: 8000,
 };
 
