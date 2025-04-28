@@ -41,6 +41,38 @@
       "type": "security_tip",
       "instruction": "{{persona}} and good at educating people about crypto security. Create a tweet (less than {{maxLength}} characters) sharing a quick and unique security tip about crypto, crypto wallets, phishing sites, sandwich attacks, or other critical topics for Web3 users. Randomly pick a different topic for each response. Start it with, 'Daily security tip, from your favorite AI Agent' and include a security-related emoji. Ensure the tip is distinct and doesn't repeat the style, structure, or examples from previous responses."
     },
+    "10:48": {
+      "type": "security_tip",
+      "instruction": "{{persona}} and good at educating people about crypto security. Create a tweet (less than {{maxLength}} characters) sharing a quick and unique security tip about crypto, crypto wallets, phishing sites, sandwich attacks, or other critical topics for Web3 users. Randomly pick a different topic for each response. Start it with, 'Daily security tip, from your favorite AI Agent' and include a security-related emoji. Ensure the tip is distinct and doesn't repeat the style, structure, or examples from previous responses."
+    },
+    "10:52": {
+      "type": "security_tip",
+      "instruction": "{{persona}} and good at educating people about crypto security. Create a tweet (less than {{maxLength}} characters) sharing a quick and unique security tip about crypto, crypto wallets, phishing sites, sandwich attacks, or other critical topics for Web3 users. Randomly pick a different topic for each response. Start it with, 'Daily security tip, from your favorite AI Agent' and include a security-related emoji. Ensure the tip is distinct and doesn't repeat the style, structure, or examples from previous responses."
+    },
+    "10:58": {
+      "type": "security_tip",
+      "instruction": "{{persona}} and good at educating people about crypto security. Create a tweet (less than {{maxLength}} characters) sharing a quick and unique security tip about crypto, crypto wallets, phishing sites, sandwich attacks, or other critical topics for Web3 users. Randomly pick a different topic for each response. Start it with, 'Daily security tip, from your favorite AI Agent' and include a security-related emoji. Ensure the tip is distinct and doesn't repeat the style, structure, or examples from previous responses."
+    },
+    "11:00": {
+      "type": "security_tip",
+      "instruction": "{{persona}} and good at educating people about crypto security. Create a tweet (less than {{maxLength}} characters) sharing a quick and unique security tip about crypto, crypto wallets, phishing sites, sandwich attacks, or other critical topics for Web3 users. Randomly pick a different topic for each response. Start it with, 'Daily security tip, from your favorite AI Agent' and include a security-related emoji. Ensure the tip is distinct and doesn't repeat the style, structure, or examples from previous responses."
+    },
+    "11:05": {
+      "type": "security_tip",
+      "instruction": "{{persona}} and good at educating people about crypto security. Create a tweet (less than {{maxLength}} characters) sharing a quick and unique security tip about crypto, crypto wallets, phishing sites, sandwich attacks, or other critical topics for Web3 users. Randomly pick a different topic for each response. Start it with, 'Daily security tip, from your favorite AI Agent' and include a security-related emoji. Ensure the tip is distinct and doesn't repeat the style, structure, or examples from previous responses."
+    },
+    "11:10": {
+      "type": "security_tip",
+      "instruction": "{{persona}} and good at educating people about crypto security. Create a tweet (less than {{maxLength}} characters) sharing a quick and unique security tip about crypto, crypto wallets, phishing sites, sandwich attacks, or other critical topics for Web3 users. Randomly pick a different topic for each response. Start it with, 'Daily security tip, from your favorite AI Agent' and include a security-related emoji. Ensure the tip is distinct and doesn't repeat the style, structure, or examples from previous responses."
+    },
+    "11:15": {
+      "type": "security_tip",
+      "instruction": "{{persona}} and good at educating people about crypto security. Create a tweet (less than {{maxLength}} characters) sharing a quick and unique security tip about crypto, crypto wallets, phishing sites, sandwich attacks, or other critical topics for Web3 users. Randomly pick a different topic for each response. Start it with, 'Daily security tip, from your favorite AI Agent' and include a security-related emoji. Ensure the tip is distinct and doesn't repeat the style, structure, or examples from previous responses."
+    },
+    "11:20": {
+      "type": "security_tip",
+      "instruction": "{{persona}} and good at educating people about crypto security. Create a tweet (less than {{maxLength}} characters) sharing a quick and unique security tip about crypto, crypto wallets, phishing sites, sandwich attacks, or other critical topics for Web3 users. Randomly pick a different topic for each response. Start it with, 'Daily security tip, from your favorite AI Agent' and include a security-related emoji. Ensure the tip is distinct and doesn't repeat the style, structure, or examples from previous responses."
+    },
     "13:30": {
       "type": "market_analysis",
       "instruction": "{{persona}} and excellent at market analysis. Create a crypto market analysis report showing all the crypto related indicators that could be helpful. Start the report with: Here's a Comprehensive Analysis Report on Key Crypto Market Indicators: (Expand the tweet to view it in full 👇)"
