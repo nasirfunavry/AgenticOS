@@ -1,3 +1,4 @@
+
 # AgenticOS – Your AI Agent for Web3 on X (Twitter)
 
 **Built by ChainGPT**
@@ -90,8 +91,6 @@ bun start
 
 You can generate Twitter access and refresh tokens using the OAuth 2.0 flow. For detailed instructions, please refer to [Twitter Token Generation Guide](./twitterTokenGeneration.md).
 
-
-
 ### Add tokens to app
 
 ```bash
@@ -159,36 +158,6 @@ Body: { "url": "{https://your-domain.com}/api/webhook/" }
 ```
 
 AgenticOS will automatically post tweets from ChainGPT news updates.
-## 🚀 One-Click Deployment on Render
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/nasirfunavry/AgenticOS&branch=dev)
-
-
-Deploy your Twitter automation app instantly on Render without needing to clone the code manually. Here's how it works:
-
-- **Instant Setup**: Click the deployment button to launch the app — no need to clone the code locally.
-- **Schedule Starts Automatically**: Once deployed, the app will begin executing the default `schedule.json` for posting tweets based on preset events.
-- **API Ready**: The app exposes APIs for:
-  - Twitter OAuth login
-  - Access & refresh token management
-  - Webhook registration
-  - Category subscription (ChainGPT)
-- **Environment Variables Required**:
-  - Set the required `.env` variables (see `.env.example`).
-  - These will be prompted during one-click deployment.
-
----
-
-## 🔧 Customizing Scheduled Tweets (Optional)
-
-Want to change the timing or tweet content?
-
-1. **Clone the Auto-Created Repo**: After deployment, Render creates a linked GitHub repo under your account.
-2. **Update `schedule.json`**:
-   - Use UTC time.
-   - Provide your desired prompt and timing.
-3. **Push Changes**: Commit and push updates to the repo.
-4. **Auto-Redeploy**: Wait 1–2 minutes — Render will redeploy automatically.
-5. **Reset Access Token**: Call the token API again to reapply your OAuth tokens.
 
 ---
 
@@ -259,4 +228,27 @@ Report issues via [GitHub Issues](https://github.com/yourusername/twitter-ai-age
 
 # Deploy on Render on One Click
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/nasirfunavry/AgenticOS&branch=dev)
+
+<!-- # Deploy on Vercel on One Click -->
+<!-- [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fnasirfunavry%2FAgenticOS&branch=dev&env=PORT,NODE_ENV,TWITTER_CLIENT_ID,TWITTER_CLIENT_SECRET,ENCRYPTION_KEY,ENCRYPTION_SALT,ENCRYPTION_IV,CHAINGPT_API_KEY&envDescription=Add%20required%20API%20keys%20and%20secrets%20from%20Twitter%20and%20ChainGPT.%20See%20.env.example%20for%20reference.&envLink=https%3A%2F%2Fgithub.com%2Fnasirfunavry%2FAgenticOS%2Fblob%2Fdev%2F.env.example&project-name=agenticos&repository-name=AgenticOS) -->
+
+<!-- [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fnasirfunavry%2FAgenticOS%2Ftree%2Fdev&env=PORT,NODE_ENV,TWITTER_CLIENT_ID,TWITTER_CLIENT_SECRET,ENCRYPTION_KEY,ENCRYPTION_SALT,ENCRYPTION_IV,CHAINGPT_API_KEY&envDescription=Add%20required%20API%20keys%20and%20secrets%20from%20Twitter%20and%20ChainGPT.%20See%20.env.example%20for%20reference.&envLink=https%3A%2F%2Fgithub.com%2Fnasirfunavry%2FAgenticOS%2Fblob%2Fdev%2F.env.example&project-name=agenticos&repository-name=AgenticOS) -->
+
+<!-- # Deploy on Railway on One Click
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/project?template=https://github.com/nasirfunavry/AgenticOS&branch=dev&env=PORT,NODE_ENV,TWITTER_CLIENT_ID,TWITTER_CLIENT_SECRET,ENCRYPTION_KEY,ENCRYPTION_SALT,ENCRYPTION_IV,CHAINGPT_API_KEY&envDescription=Add%20required%20API%20keys%20and%20secrets%20from%20Twitter%20and%20ChainGPT.%20See%20.env.example%20for%20reference.) -->
+
+<!--  For deployment -->
+
+
+
+<!-- {
+  "encryptedAccessToken": "ESXFtdgWiXb/E/vMXQmfhwpwOwevO4Syiecg8LxKoUTp/RpDfHguwWS0dz2e+hYHUaRNm3fXyno2WQSNlQ3Xrg2AabeEHDEQrTpQeCoNX4/lowKeXgOqpxA46uqLGocr04WkSflnVt+B+jI=",
+  "encryptedRefreshToken": "Lh/OtNhcknXNd9qzb1WEqyVCDgOwJ4COoOUK6L1NpSPwpyhdUFcUg03CDySC1jgfU8JvnFvl2TMAdnuOlQ3Xrg2AabeEHDEQrTpQeCoNX4/lowKRXgCmpxA46vNgN0G+HmAm4Z2kSGvFnUk="
+} -->
+
+
+<!-- {
+  "encryptedAccessToken": "GiXsxcdwmRDKLdXOXGy6qwtFJEurOICHiYE7tbxMvSDwph5CSURAjlrtdHaB/jw9SKVg2mrasnQ0WnvSlQ3Xrg2AabeEIjFSrhR6eCgNfY/lowKeXgOqpxA46klx93iW745wZUrsvyeuf1Y=",
+  "encryptedRefreshToken": "BhmtzfNh7i3Jd96/bG7FiwkZP0ueEqaloN5X+Lt022nkpRpcUiEQvWHPeDOV1kMUS8AUpHfY0Xk0YXv/lQ3Xrg2AabeEIjFSrhR6eCgNfY/lowKRXgCmpxA46qDyBAr96g7yEqmxjvB/oak="
+} -->
 
