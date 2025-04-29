@@ -4,6 +4,8 @@ import crypto from "crypto";
 import querystring from "querystring";
 import { Buffer } from "buffer";
 import { getCookie, setCookie } from "hono/cookie";
+import { env } from '../config/env';
+import { saveTokens , tokenAlreadyExists} from "../utils/encryption";
 
 interface TwitterTokens {
   access_token: string;
@@ -15,7 +17,7 @@ interface TwitterTokens {
 const config = {
   clientId: process.env.TWITTER_CLIENT_ID,       // Twitter OAuth2 Client ID
   clientSecret: process.env.TWITTER_CLIENT_SECRET, // Twitter OAuth2 Client Secret
-  redirectUri: "https://agenticos-app.onrender.com/api/login/callback", // Must match callback in Twitter app settings
+  redirectUri: "http://localhost:8000/api/login/callback",//https://agenticos-app.onrender.com/api/login/callback", // Must match callback in Twitter app settings
   port: 8000,
 };
 
@@ -41,7 +43,7 @@ export const login = async (c: Context) => {
     sameSite: "Lax",
     maxAge: 5 * 60 * 1000 // 5 minutes
   });
-
+console.log("config.redirectUri,",config.redirectUri,)
   // Redirect to Twitter's OAuth 2.0 authorization endpoint
   const authorizationUrl = `https://twitter.com/i/oauth2/authorize?${querystring.stringify({
     response_type: "code",
@@ -88,8 +90,29 @@ export const callback = async (c: Context) => {
 
     const { access_token, refresh_token } = response.data;
     console.log("Access and refresh tokens received:", { access_token, refresh_token });
-   
-    return c.json({ access_token, refresh_token });
+   // Directly call loadTokens with the context
+   const isAlreadyExist = await tokenAlreadyExists();
+  
+  if (!isAlreadyExist) {
+    await saveTokens(access_token, refresh_token, env.ENCRYPTION_KEY);
+    return c.json({
+      success: true,
+      message: "OAuth access token and refresh token have been saved successfully",
+      access_token,
+      refresh_token,
+      status: "new_tokens_saved"
+    });
+  } else {
+    return c.json({
+      success: true,
+      message: "Tokens already exist. To update, use the token update API endpoint",
+      access_token,
+      refresh_token,
+      status: "tokens_exist",
+      update_endpoint: "/api/tokens/update"
+    });
+  }
+    // return c.json({ access_token, refresh_token });
   } catch (error: any) {
     if (axios.isAxiosError(error)) {
       return c.json({ error: `Error during the token exchange: ${JSON.stringify(error.response?.data || error.message)}` }, 500);
