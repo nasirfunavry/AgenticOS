@@ -69,6 +69,9 @@ ENCRYPTION_SALT=your_hex_encryption_salt # set a value and keep it secure
 ENCRYPTION_IV=your_hex_initialization_vector # set a value and keep it secure
 
 CHAINGPT_API_KEY=your_chaingpt_api_key
+
+PASSWORD_AUTH=your_secure_password # API Authentication Password - Required for managing tokens and secure endpoints
+
 ```
 
 ---
