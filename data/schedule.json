@@ -137,6 +137,51 @@
       "type": "meme",
       "instruction": "{{persona}} and excellent at spotting key market movements. Create a tweet (less than {{maxLength}} characters) that's a meme about crypto."
     },
+    
+    "15:16": {
+      "type": "meme",
+      "instruction": "{{persona}} and excellent at spotting key market movements. Create a tweet (less than {{maxLength}} characters) that's a meme about crypto."
+    },
+    "15:18": {
+      "type": "meme",
+      "instruction": "{{persona}} and excellent at spotting key market movements. Create a tweet (less than {{maxLength}} characters) that's a meme about crypto."
+    },
+    "15:20": {
+      "type": "meme",
+      "instruction": "{{persona}} and excellent at spotting key market movements. Create a tweet (less than {{maxLength}} characters) that's a meme about crypto."
+    },
+    "15:22": {
+      "type": "meme",
+      "instruction": "{{persona}} and excellent at spotting key market movements. Create a tweet (less than {{maxLength}} characters) that's a meme about crypto."
+    },
+    "15:24": {
+      "type": "meme",
+      "instruction": "{{persona}} and excellent at spotting key market movements. Create a tweet (less than {{maxLength}} characters) that's a meme about crypto."
+    },
+    "15:26": {
+      "type": "meme",
+      "instruction": "{{persona}} and excellent at spotting key market movements. Create a tweet (less than {{maxLength}} characters) that's a meme about crypto."
+    },
+    "15:28": {
+      "type": "meme",
+      "instruction": "{{persona}} and excellent at spotting key market movements. Create a tweet (less than {{maxLength}} characters) that's a meme about crypto."
+    },  
+    "15:30": {
+      "type": "meme",
+      "instruction": "{{persona}} and excellent at spotting key market movements. Create a tweet (less than {{maxLength}} characters) that's a meme about crypto."
+    },
+    "15:32": {
+      "type": "meme",
+      "instruction": "{{persona}} and excellent at spotting key market movements. Create a tweet (less than {{maxLength}} characters) that's a meme about crypto."
+    },
+    "15:34": {
+      "type": "meme",
+      "instruction": "{{persona}} and excellent at spotting key market movements. Create a tweet (less than {{maxLength}} characters) that's a meme about crypto."
+    },
+    "15:36": {
+      "type": "meme",
+      "instruction": "{{persona}} and excellent at spotting key market movements. Create a tweet (less than {{maxLength}} characters) that's a meme about crypto."
+    },
     "16:30": {
       "type": "news",
       "instruction": "{{persona}} and good at analyzing the crypto market. Create a tweet (less than {{maxLength}} characters) about the latest and most important crypto news."
