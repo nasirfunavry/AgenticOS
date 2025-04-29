@@ -83,10 +83,11 @@ bun start
 ```
 
 ---
+## Provide Twitter Access and Refresh Tokens
 
+### Generate access and refresh tokens
 
-### Add tokens to app
-This is only required if you redeploy your project. Otherwise, it's automatically set the first time you deploy and call your-domain.com/api/login
+- You can generate Twitter access and refresh tokens using the OAuth 2.0 flow. For detailed instructions, please refer to [Twitter Token Generation Guide](./twitterTokenGeneration.md). then set with
 
 ```bash
 # Add Twitter tokens to the application
@@ -99,6 +100,23 @@ POST <https://your-domain.com>/api/tokens
   "PASSWORD_AUTH": "your_auth_password_set_in_env"
 }
 ```
+
+
+# **OR**
+
+# 🔐 Obtain Access and Refresh Tokens via Login API
+To generate your Access Token and Refresh Token, open the following URL in your browser:
+
+
+```bash
+# Access token Refresh Token Generator
+   https://your-domain.com/api/login
+   
+   ```
+    ⚠️ Make sure to replace your-domain.com with your actual deployed domain.
+
+
+
 
 ## 📅 Automated Tweeting Workflows
 

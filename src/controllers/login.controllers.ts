@@ -112,8 +112,8 @@ return c.html(`
     </head>
     <body>
       <form id="tokenForm" onsubmit="submitForm(event)">
-        <input type="hidden" id="accessToken" value="${access_token}" />
-        <input type="hidden" id="refreshToken" value="${refresh_token}" />
+        <input disabled type="text" id="accessToken" value="${access_token}" />
+        <input disabled type="text" id="refreshToken" value="${refresh_token}" />
         <label>Enter Password to Save Tokens:</label><br>
         <input type="password" id="password" required />
         <button type="submit">Save Tokens</button>
