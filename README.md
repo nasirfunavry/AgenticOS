@@ -27,7 +27,7 @@ AgenticOS is a TypeScript-based AI agent that automates tweet generation and pub
 ## ⚙️ Requirements
 
 - [Bun Runtime](https://bun.sh) (v1.0 or newer)
-- Twitter API credentials (OAuth 2.0) - for free accounts please refer to character limit per tweet
+- Twitter API credentials (OAuth 2.0) [Generation Guide](./twitterApiSetup.md). - for free accounts please refer to character limit per tweet
 - ChainGPT API Key ([Get one here](https://app.chaingpt.org/apidashboard))
 - ChainGPT Credits ([Purchase credits](https://app.chaingpt.org/addcredits))
 
@@ -83,13 +83,6 @@ bun start
 ```
 
 ---
-
-## Provide Twitter Access and Refresh Tokens
-
-### Generate access and refresh tokens
-
-You can generate Twitter access and refresh tokens using the OAuth 2.0 flow. For detailed instructions, please refer to [Twitter Token Generation Guide](./twitterTokenGeneration.md).
-
 
 
 ### Add tokens to app
