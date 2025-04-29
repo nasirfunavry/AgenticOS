@@ -81,6 +81,37 @@ CHAINGPT_API_KEY=your_chaingpt_api_key
 bun build
 bun start
 ```
+## 🚀 One-Click Deployment on Render
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/nasirfunavry/AgenticOS&branch=dev)
+
+
+Deploy your Twitter automation app instantly on Render without needing to clone the code manually. Here's how it works:
+
+- **Instant Setup**: Click the deployment button to launch the app — no need to clone the code locally.
+- **Schedule Starts Automatically**: Once deployed, the app will begin executing the default `schedule.json` for posting tweets based on preset events.
+- **API Ready**: The app exposes APIs for:
+  - Twitter OAuth login
+  - Access & refresh token management
+  - Webhook registration
+  - Category subscription (ChainGPT)
+- **Environment Variables Required**:
+  - Set the required `.env` variables (see `.env.example`).
+  - These will be prompted during one-click deployment.
+
+---
+
+## 🔧 Customizing Scheduled Tweets (Optional)
+
+Want to change the timing or tweet content?
+
+1. **Clone the Auto-Created Repo**: After deployment, Render creates a linked GitHub repo under your account.
+2. **Update `schedule.json`**:
+   - Use UTC time.
+   - Provide your desired prompt and timing.
+3. **Push Changes**: Commit and push updates to the repo.
+4. **Auto-Redeploy**: Wait 1–2 minutes — Render will redeploy automatically.
+5. **Reset Access Token**: Call the token API again to reapply your OAuth tokens.
+
 
 ---
 ## Provide Twitter Access and Refresh Tokens
@@ -172,36 +203,6 @@ Body: { "url": "{https://your-domain.com}/api/webhook/" }
 ```
 
 AgenticOS will automatically post tweets from ChainGPT news updates.
-## 🚀 One-Click Deployment on Render
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/nasirfunavry/AgenticOS&branch=dev)
-
-
-Deploy your Twitter automation app instantly on Render without needing to clone the code manually. Here's how it works:
-
-- **Instant Setup**: Click the deployment button to launch the app — no need to clone the code locally.
-- **Schedule Starts Automatically**: Once deployed, the app will begin executing the default `schedule.json` for posting tweets based on preset events.
-- **API Ready**: The app exposes APIs for:
-  - Twitter OAuth login
-  - Access & refresh token management
-  - Webhook registration
-  - Category subscription (ChainGPT)
-- **Environment Variables Required**:
-  - Set the required `.env` variables (see `.env.example`).
-  - These will be prompted during one-click deployment.
-
----
-
-## 🔧 Customizing Scheduled Tweets (Optional)
-
-Want to change the timing or tweet content?
-
-1. **Clone the Auto-Created Repo**: After deployment, Render creates a linked GitHub repo under your account.
-2. **Update `schedule.json`**:
-   - Use UTC time.
-   - Provide your desired prompt and timing.
-3. **Push Changes**: Commit and push updates to the repo.
-4. **Auto-Redeploy**: Wait 1–2 minutes — Render will redeploy automatically.
-5. **Reset Access Token**: Call the token API again to reapply your OAuth tokens.
 
 ---
 
