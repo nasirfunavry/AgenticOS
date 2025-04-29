@@ -11,13 +11,20 @@ interface TwitterTokens {
   access_token: string;
   refresh_token: string;
 }
-
-
+// Get the domain dynamically
+const getDomain = (c: Context): string => {
+  const host = c.req.header('host');
+  const protocol = c.req.header('x-forwarded-proto') || 'https';
+  return `${protocol}://${host}`;
+};
+console.log("getDomain(c),",(c: Context) => getDomain(c),)
 // Configuration – replace with your Twitter app credentials
 const config = {
   clientId: process.env.TWITTER_CLIENT_ID,       // Twitter OAuth2 Client ID
   clientSecret: process.env.TWITTER_CLIENT_SECRET, // Twitter OAuth2 Client Secret
-  redirectUri: "http://localhost:8000/api/login/callback",//https://agenticos-app.onrender.com/api/login/callback", // Must match callback in Twitter app settings
+  // redirectUri: "http://localhost:8000/api/login/callback",//https://agenticos-app.onrender.com/api/login/callback", // Must match callback in Twitter app settings
+  redirectUri: (c: Context) => `${getDomain(c)}/api/login/callback`,
+
   port: 8000,
 };
 
@@ -43,12 +50,12 @@ export const login = async (c: Context) => {
     sameSite: "Lax",
     maxAge: 5 * 60 * 1000 // 5 minutes
   });
-console.log("config.redirectUri,",config.redirectUri,)
+console.log("config.redirectUri,",config.redirectUri(c),)
   // Redirect to Twitter's OAuth 2.0 authorization endpoint
   const authorizationUrl = `https://twitter.com/i/oauth2/authorize?${querystring.stringify({
     response_type: "code",
     client_id: config.clientId,
-    redirect_uri: config.redirectUri,
+    redirect_uri: config.redirectUri(c),
     scope: "tweet.read users.read tweet.write offline.access",
     state: state,
     code_challenge: codeChallenge,
@@ -76,7 +83,7 @@ export const callback = async (c: Context) => {
         code: code,
         client_id: config.clientId,
         client_secret: config.clientSecret,
-        redirect_uri: config.redirectUri,
+        redirect_uri: config.redirectUri(c),
         code_verifier: codeVerifier,
         grant_type: "authorization_code",
       }),
