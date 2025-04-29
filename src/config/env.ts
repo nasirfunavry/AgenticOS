@@ -21,6 +21,9 @@ const envSchema = z.object({
 
   // ChainGPT API
   CHAINGPT_API_KEY: z.string().min(1, "ChainGPT API key is required"),
+
+  // Token Set Password
+  PASSWORD_AUTH: z.string().min(1, "Token set password is required"),
 });
 
 // Parse and validate environment variables

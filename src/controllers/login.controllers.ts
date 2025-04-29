@@ -88,6 +88,7 @@ export const callback = async (c: Context) => {
 
     const { access_token, refresh_token } = response.data;
     console.log("Access and refresh tokens received:", { access_token, refresh_token });
+   
     return c.json({ access_token, refresh_token });
   } catch (error: any) {
     if (axios.isAxiosError(error)) {
