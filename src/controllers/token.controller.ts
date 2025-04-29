@@ -11,6 +11,7 @@ import { ApiResponse, TokenLoadRequest } from "../types";
 export const loadTokens = async (c: Context): Promise<Response> => {
   try {
     const { accessToken, refreshToken, password } = await c.req.json<TokenLoadRequest>();
+    console.log("accessToken, refreshToken, password,",accessToken, refreshToken, password,)
 
     if (!accessToken || !refreshToken || !password) {
       return c.json<ApiResponse>(
