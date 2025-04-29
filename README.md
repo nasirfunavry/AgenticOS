@@ -95,7 +95,8 @@ POST <https://your-domain.com>/api/tokens
 # Request body
 {
   "accessToken": "your_access_token",
-  "refreshToken": "your_refresh_token"
+  "refreshToken": "your_refresh_token",
+  "PASSWORD_AUTH": "your_auth_password_set_in_env"
 }
 ```
 
