@@ -86,6 +86,7 @@ bun start
 
 
 ### Add tokens to app
+This is only required if you redeploy your project. Otherwise, it's automatically set the first time you deploy and call your-domain.com/api/login
 
 ```bash
 # Add Twitter tokens to the application
