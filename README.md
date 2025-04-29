@@ -251,6 +251,4 @@ Report issues via [GitHub Issues](https://github.com/yourusername/twitter-ai-age
 
 🚀 **Happy Coding!**
 
-# Deploy on Render on One Click
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/nasirfunavry/AgenticOS&branch=dev)
 
