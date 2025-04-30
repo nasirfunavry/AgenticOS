@@ -202,7 +202,6 @@
   </div>
 
   <script>
-
     // Delete Schedule Entry
     async function deleteScheduleEntry(time) {
       try {
@@ -282,23 +281,23 @@
       }
     });
 
-
     // Handle new entry form submission
     document.getElementById('newEntryForm').addEventListener('submit', async (e) => {
-
       e.preventDefault();
 
       const formData = new FormData(e.target);
       const newEntry = {
         time: formData.get('time'),
-        type: formData.get('type'),
-        instruction: formData.get('instruction')
+        record: {
+          type: formData.get('type'),
+          instruction: formData.get('instruction')
+        }
       };
 
       try {
         // TODO: Replace with your API endpoint
-        const response = await fetch('/api/schedule/entries', {
-          method: 'POST',
+        const response = await fetch('/api/schedule/time', {
+          method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
           },
@@ -314,6 +313,41 @@
       } catch (error) {
         console.error('Error adding new entry:', error);
         alert('Failed to add new entry. Please try again.');
+      }
+    });
+
+    // Handle update entry form submission
+    document.getElementById('editEntryForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(e.target);
+      const newEntry = {
+        time: formData.get('time'),
+        record: {
+          type: formData.get('type'),
+          instruction: formData.get('instruction')
+        }
+      };
+
+      try {
+        // TODO: Replace with your API endpoint
+        const response = await fetch('/api/schedule/time', {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newEntry)
+        });
+
+        if (response.ok) {
+          // Refresh the page to show the new entry
+          window.location.reload();
+        } else {
+          throw new Error('Failed to update entry');
+        }
+      } catch (error) {
+        console.error('Error updating entry:', error);
+        alert('Failed to update entry. Please try again.');
       }
     });
   </script>
