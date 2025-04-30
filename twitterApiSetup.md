@@ -59,6 +59,19 @@ below:
 ```env
 TWITTER_CLIENT_ID=your_client_id_here
 TWITTER_CLIENT_SECRET=your_client_secret_here
+```
+
+
+## Tweet Character Limits
+
+When using this tool to post tweets via the Twitter (X) API, please note:
+
+- **Free Twitter/X Users** are limited to **280 characters per tweet**.
+- If you attempt to tweet more than 280 characters from a free account, the request will **fail**.
+- To unlock longer tweet capabilities (up to 4,000 characters), users must upgrade to **Twitter Blue (X Premium)**.
+
+👉 You can upgrade or learn more here: [https://x.com/i/premium_sign_up](https://x.com/i/premium_sign_up)
+
 
 
 <!-- {
