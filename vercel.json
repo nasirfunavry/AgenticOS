@@ -1,9 +1,10 @@
 {
     "buildCommand": "bun install",
-    "outputDirectory": ".",
-    "devCommand": "bun start",
-    "env": {
-      "NODE_ENV": "production"
+    "devCommand": "bun run dev",
+    "outputDirectory": "dist",
+    "functions": {
+      "src/index.ts": {
+        "runtime": "@vercel/node@latest"
+      }
     }
   }
-  
