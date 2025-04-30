@@ -106,8 +106,8 @@ export const getTextForTweet = async (prompt: string): Promise<string> => {
         },
       }
     );
-    let tweetText = response.data.tweet;
-    // let tweetText = response.data.tweet.slice(0, 270); // use this for base twitter api key
+    // let tweetText = response.data.tweet;
+    let tweetText = response.data.tweet.slice(0, 270); // use this for base twitter api key
     return tweetText;
   } catch (error) {
     console.error("Error generating tweet text:", error);
