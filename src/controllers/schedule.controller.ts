@@ -1,0 +1,116 @@
+import { readFileSync, writeFileSync } from "fs";
+import { join } from "path";
+
+// Path to the schedule configuration file
+const CONFIG_PATH = join(import.meta.dir, "../../data/schedule.json");
+
+export class ScheduleController {
+  /**
+   * Get the current schedule configuration
+   */
+
+  static getSchedule(c: any) {
+    try {
+      const data = readFileSync(CONFIG_PATH, "utf8");
+      //   return JSON.parse(data);
+      return c.json(JSON.parse(data));
+    } catch (error) {
+      throw new Error("Failed to read schedule configuration");
+    }
+  }
+
+  /**
+   * Update the schedule configuration
+   * @param scheduleData - The new schedule data to write
+   */
+
+  static async updateConfig(c: any) {
+    try {
+      const { config: configData } = await c.req.json();
+      // Validate the structure
+      if (
+        !configData ||
+        !configData.persona ||
+        !configData.maxLength ||
+        !configData.timezone
+      ) {
+        throw new Error("Invalid config format");
+      }
+
+      // Read current schedule
+      const data = readFileSync(CONFIG_PATH, "utf8");
+      const schedule = JSON.parse(data);
+
+      // Update only the config
+      schedule.config = configData;
+
+      // Write back to file
+      writeFileSync(CONFIG_PATH, JSON.stringify(schedule, null, 2), "utf8");
+
+      return c.json({ message: "Config updated successfully" });
+    } catch (error: any) {
+      throw new Error(`Failed to update config: ${error.message}`);
+    }
+  }
+
+  /**
+   * Update a single time record in the schedule
+   * @param time - The time key to update (e.g. "00:00")
+   * @param record - The new record data
+   */
+  static async updateTimeRecord(c: any) {
+    try {
+      const { time, record } = await c.req.json();
+
+      if (!time || !record || !record.type || !record.instruction) {
+        throw new Error("Invalid time record format");
+      }
+
+      // Read current schedule
+      const data = readFileSync(CONFIG_PATH, "utf8");
+      const schedule = JSON.parse(data);
+
+      // Update the specific time record
+      schedule.schedule[time] = record;
+
+      // Write back to file
+      writeFileSync(CONFIG_PATH, JSON.stringify(schedule, null, 2), "utf8");
+
+      return c.json({ message: "Time record updated successfully" });
+    } catch (error) {
+      throw new Error("Failed to update time record");
+    }
+  }
+
+  /**
+   * Delete a single time record from the schedule
+   * @param time - The time key to delete (e.g. "00:00")
+   */
+  static async deleteTimeRecord(c: any) {
+    try {
+      const { time } = await c.req.json();
+
+      if (!time) {
+        throw new Error("Time parameter is required");
+      }
+
+      // Read current schedule
+      const data = readFileSync(CONFIG_PATH, "utf8");
+      const schedule = JSON.parse(data);
+
+      // Delete the specific time record
+      if (schedule.schedule[time]) {
+        delete schedule.schedule[time];
+      } else {
+        throw new Error("Time record not found");
+      }
+
+      // Write back to file
+      writeFileSync(CONFIG_PATH, JSON.stringify(schedule, null, 2), "utf8");
+
+      return c.json({ message: "Time record deleted successfully" });
+    } catch (error) {
+      throw new Error("Failed to delete time record");
+    }
+  }
+}
