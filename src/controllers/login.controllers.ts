@@ -105,23 +105,200 @@ return c.html(`
   <!DOCTYPE html>
   <html>
     <head>
-      <title>Twitter Auth - Password Verification</title>
+      <title>Twitter Auth - Token Management</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <style>
-        /* ... existing styles ... */
+        :root {
+          --primary: #1DA1F2;
+          --dark: #14171A;
+          --light: #FFFFFF;
+          --gray: #657786;
+          --light-gray: #E1E8ED;
+        }
+        
+        body { 
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+          margin: 0;
+          padding: 0;
+          background: #f5f8fa;
+          color: var(--dark);
+        }
+        
+        header {
+          background: var(--primary);
+          color: var(--light);
+          padding: 1rem;
+          text-align: center;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .container {
+          max-width: 600px;
+          margin: 2rem auto;
+          padding: 0 1rem;
+        }
+
+        .card {
+          background: var(--light);
+          border-radius: 12px;
+          padding: 2rem;
+          box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .token-display {
+          margin: 1rem 0;
+          padding: 1rem;
+          background: #f8f9fa;
+          border-radius: 8px;
+          position: relative;
+        }
+
+        .token-row {
+          margin-bottom: 1.5rem;
+        }
+
+        .token-label {
+          display: block;
+          font-weight: 600;
+          margin-bottom: 0.5rem;
+          color: var(--gray);
+        }
+
+        .token-value {
+          word-break: break-all;
+          padding: 0.5rem;
+          background: var(--light-gray);
+          border-radius: 4px;
+          font-family: monospace;
+          position: relative;
+        }
+
+        .copy-btn {
+          position: absolute;
+          right: 0.5rem;
+          top: 0.5rem;
+          background: var(--primary);
+          color: white;
+          border: none;
+          padding: 0.5rem;
+          border-radius: 4px;
+          cursor: pointer;
+          opacity: 0.9;
+        }
+
+        .copy-btn:hover {
+          opacity: 1;
+        }
+
+        .password-section {
+          margin-top: 2rem;
+          padding-top: 1rem;
+          border-top: 1px solid var(--light-gray);
+        }
+
+        input[type="password"] {
+          width: 100%;
+          padding: 0.75rem;
+          margin: 0.5rem 0;
+          border: 2px solid var(--light-gray);
+          border-radius: 4px;
+          font-size: 1rem;
+        }
+
+        button[type="submit"] {
+          background: var(--primary);
+          color: white;
+          border: none;
+          padding: 1rem;
+          border-radius: 4px;
+          width: 100%;
+          font-size: 1rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background 0.2s;
+        }
+
+        button[type="submit"]:hover {
+          background: #1991DA;
+        }
+
+        footer {
+          text-align: center;
+          padding: 1rem;
+          color: var(--gray);
+          margin-top: 2rem;
+        }
+
+        .success-message {
+          display: none;
+          background: #4CAF50;
+          color: white;
+          padding: 1rem;
+          border-radius: 4px;
+          margin: 1rem 0;
+        }
       </style>
     </head>
     <body>
-      <form id="tokenForm" onsubmit="submitForm(event)">
-        <input disabled type="text" id="accessToken" value="${access_token}" />
-        <input disabled type="text" id="refreshToken" value="${refresh_token}" />
-        <label>Enter Password to Save Tokens:</label><br>
-        <input type="password" id="password" required />
-        <button type="submit">Save Tokens</button>
-      </form>
+      <header>
+        <h1>Twitter Token Management</h1>
+        <p>Securely save your OAuth tokens</p>
+      </header>
+
+      <div class="container">
+        <div class="card">
+          <div class="token-row">
+            <span class="token-label">Access Token:</span>
+            <div class="token-display">
+              <div class="token-value" id="accessTokenValue">${access_token}</div>
+              <button class="copy-btn" onclick="copyToken('accessTokenValue')">Copy</button>
+            </div>
+          </div>
+
+          <div class="token-row">
+            <span class="token-label">Refresh Token:</span>
+            <div class="token-display">
+              <div class="token-value" id="refreshTokenValue">${refresh_token}</div>
+              <button class="copy-btn" onclick="copyToken('refreshTokenValue')">Copy</button>
+            </div>
+          </div>
+
+          <div class="password-section">
+            <form id="tokenForm" onsubmit="submitForm(event)">
+              <input type="hidden" id="accessToken" value="${access_token}" />
+              <input type="hidden" id="refreshToken" value="${refresh_token}" />
+              <label class="token-label">Enter Password to Save Tokens:</label>
+              <input type="password" id="password" required placeholder="Enter your secure password" />
+              <div class="success-message" id="successMessage">Tokens saved successfully!</div>
+              <button type="submit">Save Tokens</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <p>Powered by AgenticOS - Secure Token Management</p>
+      </footer>
 
       <script>
+        async function copyToken(elementId) {
+          const text = document.getElementById(elementId).innerText;
+          try {
+            await navigator.clipboard.writeText(text);
+            const btn = event.target;
+            btn.innerText = 'Copied!';
+            setTimeout(() => btn.innerText = 'Copy', 2000);
+          } catch (err) {
+            alert('Failed to copy text');
+          }
+        }
+
         async function submitForm(e) {
           e.preventDefault();
+          const submitBtn = e.target.querySelector('button[type="submit"]');
+          submitBtn.disabled = true;
+          submitBtn.innerText = 'Saving...';
+
           try {
             const response = await fetch('/api/tokens', {
               method: 'POST',
@@ -135,12 +312,18 @@ return c.html(`
               })
             });
             const data = await response.json();
-            alert(data.message);
+            
             if (data.success) {
-              window.location.href = '/';
+              document.getElementById('successMessage').style.display = 'block';
+              setTimeout(() => window.location.href = '/', 2000);
+            } else {
+              alert(data.message || 'Error saving tokens');
             }
           } catch (error) {
             alert('Error saving tokens');
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerText = 'Save Tokens';
           }
         }
       </script>

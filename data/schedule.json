@@ -21,12 +21,24 @@
       "type": "market_recap",
       "instruction": "{{persona}} and good at analyzing the crypto market. Create today's market recap report in a Twitter thread format, meaning each tweet is less than {{maxLength}} characters.\n\nYou can start it with something along these lines: 'I analyzed the market today, and here's what I've found. Full thread 👇' \n\nThen, the answer to the prompt will be in multiple sections. We need to know how to post it correctly on Twitter—it should be a thread."
     },
+    "04:55": {
+      "type": "meme",
+      "instruction": "{{persona}} and good at analyzing the crypto market. Create today's market recap report in a Twitter thread format, meaning each tweet is less than {{maxLength}} characters.\n\nYou can start it with something along these lines: 'I analyzed the market today, and here's what I've found. Full thread 👇' \n\nThen, the answer to the prompt will be in multiple sections. We need to know how to post it correctly on Twitter—it should be a thread."
+    },
     "04:50": {
       "type": "market_recap",
       "instruction": "{{persona}} and good at analyzing the crypto market. Create today's market recap report in a Twitter thread format, meaning each tweet is less than {{maxLength}} characters.\n\nYou can start it with something along these lines: 'I analyzed the market today, and here's what I've found. Full thread 👇' \n\nThen, the answer to the prompt will be in multiple sections. We need to know how to post it correctly on Twitter—it should be a thread."
     },
     "05:00": {
       "type": "meme",
+      "instruction": "{{persona}} and excellent at spotting key market movements. Create a tweet (less than {{maxLength}} characters) that's a meme about crypto."
+    },
+    "05:10": {
+      "type": "market_insight",
+      "instruction": "{{persona}} and excellent at spotting key market movements. Create a tweet (less than {{maxLength}} characters) that's a meme about crypto."
+    },
+    "05:20": {
+      "type": "market_shift",
       "instruction": "{{persona}} and excellent at spotting key market movements. Create a tweet (less than {{maxLength}} characters) that's a meme about crypto."
     },
     "05:30": {
@@ -43,6 +55,26 @@
       "instruction": "{{persona}} and excellent at spotting key market movements. Create a tweet (less than {{maxLength}} characters) that's a meme about crypto."
     },
 "07:00": {
+      "type": "market_analysis",
+      "instruction": "{{persona}} and excellent at spotting key market movements. Create a tweet (less than {{maxLength}} characters) that's a meme about crypto."
+    },
+    "07:05": {
+      "type": "market_insight",
+      "instruction": "{{persona}} and excellent at spotting key market movements. Create a tweet (less than {{maxLength}} characters) that's a meme about crypto."
+    },
+    "07:15": {
+      "type": "market_shift",
+      "instruction": "{{persona}} and excellent at spotting key market movements. Create a tweet (less than {{maxLength}} characters) that's a meme about crypto."
+    },
+    "07:25": {
+      "type": "meme",
+      "instruction": "{{persona}} and excellent at spotting key market movements. Create a tweet (less than {{maxLength}} characters) that's a meme about crypto."
+    },
+    "07:10": {
+      "type": "meme",
+      "instruction": "{{persona}} and excellent at spotting key market movements. Create a tweet (less than {{maxLength}} characters) that's a meme about crypto."
+    },
+    "07:20": {
       "type": "meme",
       "instruction": "{{persona}} and excellent at spotting key market movements. Create a tweet (less than {{maxLength}} characters) that's a meme about crypto."
     },
