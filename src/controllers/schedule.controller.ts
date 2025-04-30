@@ -1,5 +1,6 @@
 import { readFileSync, writeFileSync } from "fs";
 import { join } from "path";
+import ejs from "ejs";
 
 // Path to the schedule configuration file
 const CONFIG_PATH = join(import.meta.dir, "../../data/schedule.json");
@@ -8,13 +9,25 @@ export class ScheduleController {
   /**
    * Get the current schedule configuration
    */
-
-  static getSchedule(c: any) {
+  static async getSchedule(c: any) {
     try {
-      const data = readFileSync(CONFIG_PATH, "utf8");
-      //   return JSON.parse(data);
-      return c.json(JSON.parse(data));
+      const data = JSON.parse(readFileSync(CONFIG_PATH, "utf8"));
+
+      // First render the scheduler content
+      const schedulerContent = await ejs.renderFile(join(import.meta.dir, "../../views/scheduler.ejs"), {
+        title: "Scheduler",
+        schedule: data,
+      });
+
+      // Then inject it into the layout
+      const html = await ejs.renderFile(join(import.meta.dir, "../../views/layout.ejs"), {
+        title: "Scheduler",
+        body: schedulerContent,
+      });
+
+      return c.html(html);
     } catch (error) {
+      console.log("🚀 ~ ScheduleController ~ getSchedule ~ error:", error);
       throw new Error("Failed to read schedule configuration");
     }
   }
@@ -28,12 +41,7 @@ export class ScheduleController {
     try {
       const { config: configData } = await c.req.json();
       // Validate the structure
-      if (
-        !configData ||
-        !configData.persona ||
-        !configData.maxLength ||
-        !configData.timezone
-      ) {
+      if (!configData || !configData.persona || !configData.maxLength || !configData.timezone) {
         throw new Error("Invalid config format");
       }
 
