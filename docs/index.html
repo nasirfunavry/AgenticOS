@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AgenticOS Key Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { 
+            max-width: 600px; 
+            margin: 20px auto; 
+            padding: 20px; 
+            font-family: system-ui;
+            background: #f8f9fa;
+        }
+        .keys { 
+            background: white; 
+            padding: 15px; 
+            border-radius: 8px; 
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .copy-btn {
+            background: #1DA1F2;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        pre {
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔐 AgenticOS Key Generator</h1>
+    <div id="keys" class="keys">
+        <script>
+            // Generate keys immediately
+            const key = Array.from(crypto.getRandomValues(new Uint8Array(32))).map(b => b.toString(16).padStart(2, '0')).join('');
+            const salt = Array.from(crypto.getRandomValues(new Uint8Array(16))).map(b => b.toString(16).padStart(2, '0')).join('');
+            const iv = Array.from(crypto.getRandomValues(new Uint8Array(16))).map(b => b.toString(16).padStart(2, '0')).join('');
+            
+            document.write(`
+                <pre>ENCRYPTION_KEY=${key}
+ENCRYPTION_SALT=${salt}
+ENCRYPTION_IV=${iv}</pre>
+                <button onclick="copy()" class="copy-btn">Copy All</button>
+            `);
+            
+            async function copy() {
+                const text = document.querySelector('pre').innerText;
+                await navigator.clipboard.writeText(text);
+                const btn = event.target;
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = 'Copy All', 2000);
+            }
+        </script>
+    </div>
+</body>
+</html>

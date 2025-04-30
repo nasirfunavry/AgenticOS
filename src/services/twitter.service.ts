@@ -13,13 +13,12 @@ const CHAINGPT_API_URL = "https://webapi.chaingpt.org";
 export const getAccessToken = async (): Promise<string> => {
   try {
     const tokens = await loadTokens(env.ENCRYPTION_KEY);
-
     // Check if we need to refresh the token
     try {
       // Attempt to use the current token to see if it's still valid
       await axios.get("https://api.twitter.com/2/users/me", {
         headers: {
-          Authorization: `Bearer ${tokens.accessToken}`,
+          Authorization: `Bearer ${tokens.accessToken}+1122`,
         },
       });
 
@@ -35,7 +34,6 @@ export const getAccessToken = async (): Promise<string> => {
         newTokens.refreshToken,
         env.ENCRYPTION_KEY
       );
-
       return newTokens.accessToken;
     }
   } catch (error) {

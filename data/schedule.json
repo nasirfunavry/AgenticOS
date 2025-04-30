@@ -90,14 +90,23 @@
       "type": "meme",
       "instruction": "{{persona}} Meme on pi coin. Create a tweet (less than {{maxLength}} characters) that's a meme about crypto."
     },
+    "07:22": {
+      "type": "meme",
+      "instruction": "{{persona}} Generete crypto forward block group. Create a tweet (less than {{maxLength}} characters) that's a meme about crypto."
+    },
     "07:20": {
       "type": "meme",
       "instruction": "{{persona}} Generete crypto forward block group. Create a tweet (less than {{maxLength}} characters) that's a meme about crypto."
     },
-
-    "07:30": {
+  
+  
+    "07:27": {
       "type": "market_insight",
-      "instruction": "{{persona}} and good at market analysis. Write something about the market based on the fear & greed index and other indicators. What is the conclusion. Make it short, less than {{maxLength}} characters."
+      "instruction": "{{persona}} and good at market analysis on bbc. Write something about the market based on the fear & greed index and other indicators. What is the conclusion. Make it short, less than {{maxLength}} characters."
+    },
+    "07:35": {
+      "type": "meme",
+      "instruction": "{{persona}} and excellent at spotting key market movements of bnb. Create a tweet (less than {{maxLength}} characters) that's a meme about crypto."
     },
     "07:50": {
       "type": "meme",

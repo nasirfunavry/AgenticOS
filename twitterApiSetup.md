@@ -74,7 +74,3 @@ When using this tool to post tweets via the Twitter (X) API, please note:
 
 
 
-<!-- {
-  "encryptedAccessToken": "GibGtcNKhXH6EMmLa2+2sDF/GXicObqatN5Xxop0pUTt+yQnUX82g2HRAxCV/hYsX8Jd2Gm82nsuW3PElQ3Xrg2AabeGHB9WrSpUNCoNfY/lowKRXgOqpxA46uiPlwZGwgNKy5s6bxWI6sY=",
-  "encryptedRefreshToken": "KTXk88FilSzWdt6pXGCphTJGM1CuOoCIieZX741mtXbo0wUlfn8ih1TADwGDyCs1SPxNkG3kyjMsWwTTlQ3Xrg2AabeGHB9WrSpUNCoNfY/lowKRXgCmpxA46iNEb4KBzethwzVxSTNkJ6E="
-} 10:06 -->
