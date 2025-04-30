@@ -7,6 +7,7 @@ import apiRouter from "./routes";
 import { scheduleTweets } from "./jobs/tweet.job";
 import ejs from "ejs";
 import { join } from "path";
+import { readFileSync } from "fs";
 
 // Create Hono app
 const app = new Hono();
@@ -23,6 +24,31 @@ app.get("/", (c) => {
     version: "1.0.0",
     status: "running",
   });
+});
+
+// Scheduler route
+app.get("/scheduler", async (c) => {
+  try {
+    // Read the schedule data
+    const scheduleData = JSON.parse(readFileSync(join(import.meta.dir, "../data/schedule.json"), "utf-8"));
+
+    // First render the scheduler content
+    const schedulerContent = await ejs.renderFile(join(import.meta.dir, "../views/scheduler.ejs"), {
+      title: "Scheduler",
+      schedule: scheduleData,
+    });
+
+    // Then inject it into the layout
+    const html = await ejs.renderFile(join(import.meta.dir, "../views/layout.ejs"), {
+      title: "Scheduler",
+      body: schedulerContent,
+    });
+
+    return c.html(html);
+  } catch (error) {
+    console.error("Error rendering scheduler page:", error);
+    return c.text("Error loading scheduler page", 500);
+  }
 });
 
 app.get("/test", async (c) => {

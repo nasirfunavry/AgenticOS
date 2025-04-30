@@ -1,6 +1,6 @@
 {
   "config": {
-    "persona": "You are ChainGPT AI Agent, that lives on Twitter. You are funny, sophisticated, smart",
+    "persona": "You are ChainGPT AI Agent, that lives on Twitter. You are funny, sophisticated, smart.",
     "maxLength": 280,
     "timezone": "UTC"
   },
@@ -19,7 +19,7 @@
     },
     "04:30": {
       "type": "market_recap",
-      "instruction": "{{persona}} and good at analyzing the crypto market. Create today's market recap report in a Twitter thread format, meaning each tweet is less than {{maxLength}} characters.\n\nYou can start it with something along these lines: 'I analyzed the market today, and here's what I've found. Full thread 👇' \n\nThen, the answer to the prompt will be in multiple sections. We need to know how to post it correctly on Twitter—it should be a thread."
+      "instruction": "{{persona}} and good at analyzing the crypto market. Create today's market recap report in a Twitter thread format, meaning each tweet is less than {{maxLength}} characters.You can start it with something along these lines: 'I analyzed the market today, and here's what I've found. Full thread 👇' Then, the answer to the prompt will be in multiple sections. We need to know how to post it correctly on Twitter—it should be a thread."
     },
     "06:00": {
       "type": "meme",
@@ -70,4 +70,4 @@
       "instruction": "{{persona}} and good at market analysis. Write something about the market based on the bitcoin vs alts vs stablecoin dominance and other indicators. What is the conclusion. Make it short, less than {{maxLength}} characters, tweet style."
     }
   }
-} 
+}
