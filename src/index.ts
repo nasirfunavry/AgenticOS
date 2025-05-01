@@ -1,10 +1,10 @@
 import { Hono } from "hono";
+import { serveStatic } from "hono/bun";
 import { logger } from "hono/logger";
 import { prettyJSON } from "hono/pretty-json";
 import { env } from "./config/env";
 import apiRouter from "./routes";
 import { scheduleTweets } from "./jobs/tweet.job";
-
 
 // Create Hono app
 const app = new Hono();
@@ -12,6 +12,7 @@ const app = new Hono();
 // Middleware
 app.use("*", logger());
 app.use("*", prettyJSON());
+app.use("/style.css", serveStatic({ root: "./public" }));
 
 // Default route
 app.get("/", (c) => {

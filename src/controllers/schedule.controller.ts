@@ -1,19 +1,40 @@
 import { readFileSync, writeFileSync } from "fs";
 import { join } from "path";
+import ejs from "ejs";
 
 // Path to the schedule configuration file
 const CONFIG_PATH = join(import.meta.dir, "../../data/schedule.json");
 
 export class ScheduleController {
   /**
+   * Helper method to sort schedule by time
+   */
+  private static sortSchedule(schedule: any) {
+    const sortedEntries = Object.entries(schedule.schedule).sort(([timeA], [timeB]) => timeA.localeCompare(timeB));
+    schedule.schedule = Object.fromEntries(sortedEntries);
+    return schedule;
+  }
+
+  /**
    * Get the current schedule configuration
    */
-
-  static getSchedule(c: any) {
+  static async getSchedule(c: any) {
     try {
-      const data = readFileSync(CONFIG_PATH, "utf8");
-      //   return JSON.parse(data);
-      return c.json(JSON.parse(data));
+      const data = JSON.parse(readFileSync(CONFIG_PATH, "utf8"));
+
+      // First render the scheduler content
+      const schedulerContent = await ejs.renderFile(join(import.meta.dir, "../../views/scheduler.ejs"), {
+        title: "Scheduler",
+        schedule: data,
+      });
+
+      // Then inject it into the layout
+      const html = await ejs.renderFile(join(import.meta.dir, "../../views/layout.ejs"), {
+        title: "Scheduler",
+        body: schedulerContent,
+      });
+
+      return c.html(html);
     } catch (error) {
       throw new Error("Failed to read schedule configuration");
     }
@@ -23,17 +44,11 @@ export class ScheduleController {
    * Update the schedule configuration
    * @param scheduleData - The new schedule data to write
    */
-
   static async updateConfig(c: any) {
     try {
       const { config: configData } = await c.req.json();
       // Validate the structure
-      if (
-        !configData ||
-        !configData.persona ||
-        !configData.maxLength ||
-        !configData.timezone
-      ) {
+      if (!configData || !configData.persona || !configData.maxLength || !configData.timezone) {
         throw new Error("Invalid config format");
       }
 
@@ -73,8 +88,10 @@ export class ScheduleController {
       // Update the specific time record
       schedule.schedule[time] = record;
 
+      const sortedSchedule = ScheduleController.sortSchedule(schedule);
+
       // Write back to file
-      writeFileSync(CONFIG_PATH, JSON.stringify(schedule, null, 2), "utf8");
+      writeFileSync(CONFIG_PATH, JSON.stringify(sortedSchedule, null, 2), "utf8");
 
       return c.json({ message: "Time record updated successfully" });
     } catch (error) {

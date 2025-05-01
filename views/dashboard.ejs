@@ -1,0 +1,16 @@
+<div class="bg-white rounded-lg shadow-sm p-6">
+  <h1 class="text-3xl font-bold mb-4">Welcome to the Dashboard</h1>
+  <p>Here's some content specific to the dashboard.</p>
+
+  <% array.forEach(element=> { %>
+    <p>
+      <%= element %>
+    </p>
+    <% }) %>
+
+      <form action="/api/create-tweet" method="post">
+        <input type="text" name="tweet" placeholder="Tweet">
+        <input type="text" hidden name="userId" value="1">
+        <button type="submit">Create Tweet</button>
+      </form>
+</div>
