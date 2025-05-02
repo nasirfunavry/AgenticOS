@@ -13,6 +13,7 @@ const app = new Hono();
 app.use("*", logger());
 app.use("*", prettyJSON());
 app.use("/style.css", serveStatic({ root: "./public" }));
+app.use("/images/*", serveStatic({ root: "./public" }));
 
 // Default route
 // app.get("/", (c) => {
