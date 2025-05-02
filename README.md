@@ -4,7 +4,7 @@
 
 AgenticOS lets you effortlessly create and deploy your own intelligent AI agent on X (formerly Twitter)—purpose-built for the Web3 ecosystem. Automate tasks like real-time market research, breaking crypto news, token analysis, and community engagement, enhancing your digital presence with 24/7 AI-driven insights.
 
-📌 **Live Demo**: <a href="https://x.com/ChainGPTAI" target="_blank">ChainGPT AI on X</a>
+📌 **Live Demo**: <a href="https://x.com/ChainGPTAI" target="_blank" rel="noopener noreferrer">ChainGPT AI on X</a>
 
 ---
 
