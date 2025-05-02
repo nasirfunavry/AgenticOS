@@ -140,6 +140,8 @@ there are two methods to schedule tweets
 
 2. Edit scheular in dashboard. You can find dashboard at <your_domain>/
 
+   ![Schedule Interface](images/image.png)
+
 Tweets are auto-generated and posted according to this schedule (UTC).
 
 ### Workflow 2: ChainGPT Webhook for Live News
