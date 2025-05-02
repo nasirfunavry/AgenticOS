@@ -57,7 +57,6 @@ console.log(`🚀 Twitter AI Agent listening on port ${port}`);
 // Start tweet scheduler
 try {
   scheduleTweets();
-  console.log("Tweet scheduler started successfully");
 } catch (error) {
   console.error("Failed to start tweet scheduler:", error);
 }
