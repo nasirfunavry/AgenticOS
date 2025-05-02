@@ -4,7 +4,7 @@
 
 AgenticOS lets you effortlessly create and deploy your own intelligent AI agent on X (formerly Twitter)—purpose-built for the Web3 ecosystem. Automate tasks like real-time market research, breaking crypto news, token analysis, and community engagement, enhancing your digital presence with 24/7 AI-driven insights.
 
-📌 **Live Demo**: [ChainGPT AI on X](https://x.com/ChainGPTAI)
+📌 **Live Demo**: <a href="https://x.com/ChainGPTAI" target="_blank">ChainGPT AI on X</a>
 
 ---
 
@@ -84,9 +84,10 @@ PASSWORD_AUTH=your_secure_password # API Authentication Password - Required for 
 bun build
 bun start
 ```
-## 🚀 One-Click Deployment on Render
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/nasirfunavry/AgenticOS&branch=dev)
 
+## 🚀 One-Click Deployment on Render
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/nasirfunavry/AgenticOS&branch=dev)
 
 Deploy your Twitter automation app instantly on Render without needing to clone the code manually. Here's how it works:
 
@@ -115,8 +116,8 @@ Want to change the timing or tweet content?
 4. **Auto-Redeploy**: Wait 1–2 minutes — Render will redeploy automatically.
 5. **Reset Access Token**: Call the token API again to reapply your OAuth tokens.
 
-
 ---
+
 ## Provide Twitter Access and Refresh Tokens
 
 ### Generate access and refresh tokens
@@ -135,22 +136,19 @@ POST <https://your-domain.com>/api/tokens
 }
 ```
 
-
 # **OR**
 
 # 🔐 Obtain Access and Refresh Tokens via Login API
-To generate your Access Token and Refresh Token, open the following URL in your browser:
 
+To generate your Access Token and Refresh Token, open the following URL in your browser:
 
 ```bash
 # Access token Refresh Token Generator
    https://your-domain.com/api/login
-   
-   ```
+
+```
+
     ⚠️ Make sure to replace your-domain.com with your actual deployed domain.
-
-
-
 
 ## 📅 Automated Tweeting Workflows
 
@@ -273,5 +271,3 @@ Contributions are welcome! Follow these steps:
 Report issues via [GitHub Issues](https://github.com/yourusername/twitter-ai-agent/issues).
 
 🚀 **Happy Coding!**
-
-
