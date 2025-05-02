@@ -34,12 +34,12 @@ const authMiddleware = async (c: any, next: any) => {
 // Apply auth middleware to all routes
 // scheduleRouter.use("/*", authMiddleware);
 
-scheduleRouter.get("/", ScheduleController.getSchedule);
+// scheduleRouter.get("/", ScheduleController.getSchedule);
 
-scheduleRouter.patch("/config", ScheduleController.updateConfig);
+scheduleRouter.patch("/config", authMiddleware, ScheduleController.updateConfig);
 
-scheduleRouter.patch("/time", ScheduleController.updateTimeRecord);
+scheduleRouter.patch("/time", authMiddleware, ScheduleController.updateTimeRecord);
 
-scheduleRouter.delete("/time", ScheduleController.deleteTimeRecord);
+scheduleRouter.delete("/time", authMiddleware, ScheduleController.deleteTimeRecord);
 
 export default scheduleRouter;

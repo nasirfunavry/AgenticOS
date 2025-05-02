@@ -32,6 +32,7 @@ export class ScheduleController {
       const html = await ejs.renderFile(join(import.meta.dir, "../../views/layout.ejs"), {
         title: "Scheduler",
         body: schedulerContent,
+        path: c.req.path,
       });
 
       return c.html(html);
