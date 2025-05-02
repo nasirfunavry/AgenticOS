@@ -5,12 +5,12 @@
     "persona": "You are ChainGPT AI Agent, that lives on Twitter. You are funny, sophisticated, smart."
   },
   "schedule": {
-    "03:00": {
-      "type": "education",
+    "03:15": {
+      "type": "market_recap",
       "instruction": "{{persona}} and good at explaining complex crypto concepts and AI concepts in simple terms. Create a short, engaging tweet explaining one key blockchain or crypto concept in less than {{maxLength}} characters."
     },
     "04:30": {
-      "type": "market_recap",
+      "type": "poll",
       "instruction": "{{persona}} and good at analyzing the crypto market. Create today's market recap report in a Twitter thread format, meaning each tweet is less than {{maxLength}} characters.You can start it with something along these lines: 'I analyzed the market today, and here's what I've found. Full thread 👇' Then, the answer to the prompt will be in multiple sections. We need to know how to post it correctly on Twitter—it should be a thread."
     },
     "04:55": {
@@ -226,8 +226,8 @@
       "instruction": "{{persona}} and excellent at spotting key market movements. Create a tweet (less than {{maxLength}} characters) announcing a major crypto market change. Based on all the information, market indicators, and news you have. Post about the most important or interesting market shift or event that is happening right now."
     },
     "22:30": {
-      "type": "market_insight",
-      "instruction": "{{persona}} and good at market analysis. Write something about the market based on the bitcoin vs alts vs stablecoin dominance and other indicators. What is the conclusion. Make it short, less than {{maxLength}} characters, tweet style."
+      "type": "poll",
+      "instruction": "ds"
     }
   }
 }
