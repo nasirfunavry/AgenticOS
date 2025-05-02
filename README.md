@@ -108,19 +108,7 @@ Deploy your Twitter automation app instantly on Render without needing to clone 
   - Set the required `.env` variables (see `.env.example`).
   - These will be prompted during one-click deployment.
 
----
 
-## 🔧 Customizing Scheduled Tweets (Optional)
-
-Want to change the timing or tweet content?
-
-1. **Clone the Auto-Created Repo**: After deployment, Render creates a linked GitHub repo under your account.
-2. **Update `schedule.json`**:
-   - Use UTC time.
-   - Provide your desired prompt and timing.
-3. **Push Changes**: Commit and push updates to the repo.
-4. **Auto-Redeploy**: Wait 1–2 minutes — Render will redeploy automatically.
-5. **Reset Access Token**: Call the token API again to reapply your OAuth tokens.
 
 
 ---
@@ -171,6 +159,20 @@ Define your schedule in `data/schedule.json`:
   "18:00": "Crypto markets update"
 }
 ```
+---
+
+## 🔧 Customizing Scheduled Tweets (Optional)
+
+Want to change the timing or tweet content?
+
+1. **Clone the Auto-Created Repo**: After deployment, Render creates a linked GitHub repo under your account.
+2. **Update `schedule.json`**:
+   - Use UTC time.
+   - Provide your desired prompt and timing.
+3. **Push Changes**: Commit and push updates to the repo.
+4. **Auto-Redeploy**: Wait 1–2 minutes — Render will redeploy automatically.
+5. **Reset Access Token**: Call the token API again to reapply your OAuth tokens, or open https://your-domain.com/api/login in your browser to set your access and refresh tokens.
+
 
 Tweets are auto-generated and posted according to this schedule (UTC).
 
