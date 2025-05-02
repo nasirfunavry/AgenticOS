@@ -4,7 +4,7 @@
 
 AgenticOS lets you effortlessly create and deploy your own intelligent AI agent on X (formerly Twitter)—purpose-built for the Web3 ecosystem. Automate tasks like real-time market research, breaking crypto news, token analysis, and community engagement, enhancing your digital presence with 24/7 AI-driven insights.
 
-📌 **Live Demo**: <a href="https://x.com/ChainGPTAI" target="_blank">ChainGPT AI on X</a>
+📌 **Live Demo**: - [ChainGPT AI on X](https://x.com/ChainGPTAI) ↗️
 
 ---
 
@@ -26,13 +26,14 @@ AgenticOS is a TypeScript-based AI agent that automates tweet generation and pub
 
 ## ⚙️ Requirements
 
-- <a href="https://bun.sh" target="_blank" rel="noopener noreferrer">Bun Runtime ↗️</a> (v1.0 or newer)
+- [Bun Runtime](https://bun.sh) ↗️ (v1.0 or newer)
 
-- Twitter API credentials (OAuth 2.0) <a href="https://github.com/nasirfunavry/AgenticOS/blob/main/twitterApiSetup.md" target="_blank">Generation Guide</a>.
+- Twitter API credentials (OAuth 2.0) - [Generation Guide](./twitterApiSetup.md) ↗️
 
-- ChainGPT API Key (<a href="https://app.chaingpt.org/apidashboard" target="_blank">Get one here</a>)
+- [ChainGPT API Key](https://app.chaingpt.org/apidashboard) ↗️
 
-- ChainGPT Credits (<a href="https://app.chaingpt.org/addcredits" target="_blank">Purchase credits</a>)
+- [ChainGPT Credits](https://app.chaingpt.org/addcredits) ↗️
+
 
 Each generated tweet consumes 1 ChainGPT credit.
 
@@ -79,10 +80,7 @@ PASSWORD_AUTH=your_secure_password # API Authentication Password - Required for 
 
 ## 🔐 Generate Encryption Keys
 
-<a href="https://nasirfunavry.github.io/AgenticOS" target="_blank">
-  <img src="https://img.shields.io/badge/🔐_Generate_New_Keys-Click_Here-blue?style=for-the-badge" alt="Generate New Keys">
-</a>
-
+[![🔐 Generate New Keys](https://img.shields.io/badge/🔐_Generate_New_Keys-Click_Here-blue?style=for-the-badge)](https://nasirfunavry.github.io/AgenticOS) ↗️
 > Click the button above to generate secure encryption keys for your .env file
 ---
 
@@ -95,9 +93,7 @@ bun build
 bun start
 ```
 ## 🚀 One-Click Deployment on Render
-<a href="https://render.com/deploy?repo=https://github.com/nasirfunavry/AgenticOS&branch=dev" target="_blank">
-  <img src="https://render.com/images/deploy-to-render-button.svg" alt="Deploy to Render">
-</a>
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/nasirfunavry/AgenticOS&branch=dev) ↗️
 
 Deploy your Twitter automation app instantly on Render without needing to clone the code manually. Here's how it works:
 
@@ -281,8 +277,7 @@ Contributions are welcome! Follow these steps:
 
 ## 📧 Support
 
-Report issues via [GitHub Issues](https://github.com/nasirfunavry/AgenticOS/issues){:target="_blank"}.
-
+Report issues via [GitHub Issues](https://github.com/nasirfunavry/AgenticOS/issues) ↗️.
 🚀 **Happy Coding!**
 
 
