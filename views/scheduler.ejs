@@ -411,6 +411,7 @@
 
       const formData = new FormData(e.target);
       const newEntry = {
+        oldTime: formData.get('originalTime'),
         time: formData.get('time'),
         record: {
           type: formData.get('type'),
