@@ -1,11 +1,18 @@
-import { Hono } from 'hono';
-import { registerWebhook, tweetWebhook } from '../controllers/webhook.controller';
+import { Hono } from "hono";
+import {
+  registerWebhook,
+  tweetWebhook,
+  renderLiveNews,
+  subscribeToCategories,
+} from "../controllers/webhook.controller";
 
 // Create a Hono router for webhook routes
-const webhookRouter = new Hono();
+const router = new Hono();
 
 // Register webhook routes
-webhookRouter.post('/register', registerWebhook);
-webhookRouter.post('/', tweetWebhook);
+router.post("/", tweetWebhook); // Webhook Listener
+router.post("/register", registerWebhook); // Webhook Registration
+router.get("/live-news", renderLiveNews); // Live News Page
+router.post("/categories/subscribe", subscribeToCategories); // Subscribe to Categories
 
-export default webhookRouter; 
+export default router;

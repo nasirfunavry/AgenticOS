@@ -115,7 +115,7 @@ To generate your Access Token and Refresh Token, open the following URL in your 
 
 ```
 
-    ⚠️ Make sure to replace your-domain.com with your actual deployed domain (to deploy you can refer to "One-Click Deployment on Render" section).
+    ⚠️ Make sure to replace your-domain.com with your actual deployed domain (to deploy you can refer to "Deployment on Render" section).
 
 ## 📅 Automated Tweeting Workflows
 
@@ -185,17 +185,35 @@ Body: { "url": "{https://your-domain.com}/api/webhook/" }
 
 AgenticOS will automatically post tweets from ChainGPT news updates.
 
-## 🚀 One-Click Deployment on Render
+## 🚀 Deployment on Render
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/nasirfunavry/AgenticOS&branch=dev)
+[![Fork on GitHub](https://img.shields.io/github/forks/nasirfunavry/AgenticOS?style=social)](https://github.com/nasirfunavry/AgenticOS/fork)
+
+To deploy this application:
+
+1. First, fork this repository using the "Fork" button
+2. Copy your repository URL from the browser's address bar
+3. Open a new tab and paste this URL:
+   ```
+   https://render.com/deploy?repo=YOUR_REPO_URL
+   ```
+   Replace `YOUR_REPO_URL` with your repository URL
+
+For example, if your repository URL is `https://github.com/john-doe/AgenticOS`, you would paste:
+
+```
+https://render.com/deploy?repo=https://github.com/john-doe/AgenticOS
+```
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=YOUR_REPO_URL)
 
 Deploy your Twitter automation app instantly on Render without needing to clone the code manually. Here's how it works:
 
-- **Instant Setup**: Click the deployment button to launch the app — no need to clone the code locally.
+- **Simple Setup**: Fork the repository and use the Render deployment URL — no need to clone the code locally.
 - **Schedule Starts Automatically**: Once deployed, the app will begin executing the default `schedule.json` for posting tweets based on preset events.
 - **Environment Variables Required**:
   - Set the required `.env` variables (see `.env.example`).
-  - These will be prompted during one-click deployment.
+  - These will be prompted during deployment.
 - **API Ready**: The app exposes APIs for:
   - Twitter OAuth login ({your_domain/api/login})
   - Access & refresh token management (after login you can save token after verifying password entered during setting env)
