@@ -21,7 +21,7 @@ async function fetchConnectedWebhook(): Promise<string | null> {
       },
     });
 
-    return response.data?.url || null;
+    return response?.data?.webhookUrl || null;
   } catch (error) {
     console.error("Error fetching connected webhook:", error);
     return null;
