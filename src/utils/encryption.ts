@@ -5,7 +5,7 @@ import { existsSync, mkdirSync, writeFileSync, readFileSync } from "fs";
 
 // File path for storing encrypted tokens
 const TOKENS_FILE_PATH = join(import.meta.dir, "../../data/tokens.json");
-
+const TOKENS_DIR_PATH = join(import.meta.dir, "../../data");
 // Encryption settings
 const ALGORITHM = "AES-GCM"; // Using Web Crypto API algorithm name
 const KEY_LENGTH = 32; // 256-bit key
@@ -157,3 +157,32 @@ export async function loadTokens(
 
   return { accessToken, refreshToken };
 }
+
+export async function tokenAlreadyExists(): Promise<boolean> {
+  try {
+    // Check if directory exists, if not create it
+    if (!existsSync(TOKENS_DIR_PATH)) {
+      mkdirSync(TOKENS_DIR_PATH, { recursive: true });
+      return false;
+    }
+
+    // Check if file exists
+    if (!existsSync(TOKENS_FILE_PATH)) {
+      return false;
+    }
+
+    // Read and check if file has valid tokens
+    const tokensData = readFileSync(TOKENS_FILE_PATH, "utf8");
+    if (!tokensData) {
+      return false;
+    }
+
+    const encryptedTokens: EncryptedTokens = JSON.parse(tokensData);
+    return encryptedTokens.encryptedAccessToken?.length > 0 && 
+           encryptedTokens.encryptedRefreshToken?.length > 0;
+  } catch (error) {
+    console.error("Error checking tokens:", error);
+    return false;
+  }
+}
+

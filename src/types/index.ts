@@ -74,6 +74,7 @@ export interface TweetWebhookRequest {
 export interface TokenLoadRequest {
     accessToken: string;
     refreshToken: string;
+    password: string;
 }
 
 /**

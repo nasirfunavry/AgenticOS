@@ -1,23 +1,26 @@
-import { schedule } from 'node-cron';
-import { readFileSync } from 'fs';
-import { join } from 'path';
-import { generateAndPostTweet } from '../services/twitter.service';
+import { schedule, ScheduledTask } from "node-cron";
+import { readFileSync } from "fs";
+import { join } from "path";
+import { generateAndPostTweet } from "../services/twitter.service";
 
 // Path to the schedule configuration file
-const CONFIG_PATH = join(import.meta.dir, '../../data/schedule.json');
+const CONFIG_PATH = join(import.meta.dir, "../../data/schedule.json");
+
+// Store scheduled jobs for later management
+const scheduledJobs = new Map<string, ScheduledTask>();
 
 /**
  * Load schedule configuration from JSON file
  * @returns The schedule configuration with config and schedule entries
  */
-function loadConfig(): { config: any, schedule: Record<string, any> } {
-    try {
-        const data = readFileSync(CONFIG_PATH, 'utf8');
-        return JSON.parse(data);
-    } catch (error) {
-        console.error('Error reading schedule config:', error);
-        return { config: {}, schedule: {} };
-    }
+function loadConfig(): { config: any; schedule: Record<string, any> } {
+  try {
+    const data = readFileSync(CONFIG_PATH, "utf8");
+    return JSON.parse(data);
+  } catch (error) {
+    console.error("Error reading schedule config:", error);
+    return { config: {}, schedule: {} };
+  }
 }
 
 /**
@@ -27,9 +30,9 @@ function loadConfig(): { config: any, schedule: Record<string, any> } {
  * @returns The processed instruction
  */
 function processTemplate(instruction: string, config: any): string {
-    return instruction.replace(/\{\{(\w+)\}\}/g, (match, key) => {
-        return config[key] || match;
-    });
+  return instruction.replace(/\{\{(\w+)\}\}/g, (match, key) => {
+    return config[key] || match;
+  });
 }
 
 /**
@@ -37,43 +40,67 @@ function processTemplate(instruction: string, config: any): string {
  * Sets up cron jobs for each time entry in the schedule
  */
 export function scheduleTweets(): void {
-    const { config, schedule: scheduleEntries } = loadConfig();
+  // Stop any existing jobs before creating new ones
+  stopAllScheduledTweets();
 
-    if (!scheduleEntries || Object.keys(scheduleEntries).length === 0) {
-        console.warn('No scheduled tweets found in configuration');
-        return;
-    }
+  const { config, schedule: scheduleEntries } = loadConfig();
 
-    console.log(`Setting up ${Object.keys(scheduleEntries).length} scheduled tweets`);
+  if (!scheduleEntries || Object.keys(scheduleEntries).length === 0) {
+    console.warn("No scheduled tweets found in configuration");
+    return;
+  }
 
-    for (const time in scheduleEntries) {
-        const entry = scheduleEntries[time];
-        const { type, instruction } = entry;
+  console.log(`Setting up ${Object.keys(scheduleEntries).length} scheduled tweets`);
 
-        // Process the template to replace placeholders with actual values
-        const processedInstruction = processTemplate(instruction, config);
+  for (const time in scheduleEntries) {
+    const entry = scheduleEntries[time];
+    const { type, instruction } = entry;
 
-        const [hour, minute] = time.split(':');
-        const timezone = config.timezone || 'UTC';
+    // Process the template to replace placeholders with actual values
+    const processedInstruction = processTemplate(instruction, config);
 
-        // Schedule the cron job
-        schedule(
-            `${minute} ${hour} * * *`,
-            async () => {
-                try {
-                    console.log(`Running scheduled tweet for ${timezone} time: ${time} (Type: ${type})`);
-                    await generateAndPostTweet(processedInstruction);
-                } catch (error) {
-                    console.error(`Error executing scheduled tweet for time ${time}:`, error);
-                }
-            },
-            {
-                timezone,
-            }
-        );
+    const [hour, minute] = time.split(":");
+    const timezone = config.timezone || "UTC";
 
-        console.log(`Scheduled ${type} tweet for ${time} ${timezone}`);
-    }
+    // Schedule the cron job
+    const job = schedule(
+      `${minute} ${hour} * * *`,
+      async () => {
+        try {
+          console.log(`Running scheduled tweet for ${timezone} time: ${time} (Type: ${type})`);
+          await generateAndPostTweet(processedInstruction);
+        } catch (error) {
+          console.error(`Error executing scheduled tweet for time ${time}:`, error);
+        }
+      },
+      {
+        timezone,
+      }
+    );
 
-    console.log('Tweet scheduler started successfully');
-} 
+    // Store the scheduled job
+    scheduledJobs.set(time, job);
+
+    console.log(`Scheduled ${type} tweet for ${time} ${timezone}`);
+  }
+}
+
+/**
+ * Stops all currently scheduled tweets
+ * @returns The number of jobs that were stopped
+ */
+export function stopAllScheduledTweets(): number {
+  let stoppedCount = 0;
+
+  for (const [time, job] of scheduledJobs.entries()) {
+    job.stop();
+    scheduledJobs.delete(time);
+    stoppedCount++;
+  }
+
+  if (stoppedCount > 0) {
+    console.log(`Stopped ${stoppedCount} scheduled tweet jobs`);
+  }
+
+  return stoppedCount;
+}

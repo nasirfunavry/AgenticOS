@@ -1,0 +1,14 @@
+{
+    "build": {
+      "env": {
+        "PORT": "8000",
+        "NODE_ENV": "development"
+      },
+      "cmd": "curl -fsSL https://bun.sh/install | bash && bun install"
+    },
+    "start": {
+      "cmd": "bun run dev"
+    },
+    "plugins": []
+  }
+  
