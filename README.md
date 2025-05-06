@@ -40,7 +40,7 @@ Each generated tweet consumes 1 ChainGPT credit.
 ### Step 1: Clone and Set Up
 
 ```bash
-git clone https://github.com/ChainGPT-org/AgenticOS.git
+git clone https://github.com/nasirfunavry/AgenticOS.git
 cd AgenticOS
 
 # Install Bun runtime
