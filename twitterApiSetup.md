@@ -27,7 +27,8 @@ To run this application, you’ll need to obtain Twitter API credentials using *
    - Go to your app's **Settings** tab
    - Under **OAuth 2.0**, configure:
    - **Callback URL:**  
-      `https://your-domain.com/api/callback` — *Replace `your-domain.com` with your actual domain. It must match exactly as configured in the Twitter Developer Portal.*
+      `https://your-domain.com/api/login/callback` — _Replace `your-domain.com` with your actual domain. It must match exactly as configured in the Twitter Developer Portal._
+
      - **Website URL:**  
        `https://your-deployment-url.com`
      - **Client Type:** Confidential
@@ -35,7 +36,7 @@ To run this application, you’ll need to obtain Twitter API credentials using *
        - `tweet.read`
        - `tweet.write`
        - `users.read`
-       - `offline.access` *(required for refresh tokens)*
+       - `offline.access` _(required for refresh tokens)_
 
    - Save the changes.
 
@@ -49,10 +50,8 @@ To run this application, you’ll need to obtain Twitter API credentials using *
 
 ### 🧪 Add to Environment Variables
 
-- Paste your credentials in the `.env` file like you      
+- Paste your credentials in the `.env` file like you
 - During one-click deployment, you'll be asked to enter these credentials as environment variables.
-
-
 
 below:
 
@@ -60,7 +59,6 @@ below:
 TWITTER_CLIENT_ID=your_client_id_here
 TWITTER_CLIENT_SECRET=your_client_secret_here
 ```
-
 
 ## Tweet Character Limits
 
@@ -71,8 +69,6 @@ When using this tool to post tweets via the Twitter (X) API, please note:
 - To unlock longer tweet capabilities (up to 4,000 characters), users must upgrade to **Twitter Blue (X Premium)**.
 
 👉 You can upgrade or learn more here: [https://x.com/i/premium_sign_up](https://x.com/i/premium_sign_up)
-
-
 
 <!-- {
   "encryptedAccessToken": "GibGtcNKhXH6EMmLa2+2sDF/GXicObqatN5Xxop0pUTt+yQnUX82g2HRAxCV/hYsX8Jd2Gm82nsuW3PElQ3Xrg2AabeGHB9WrSpUNCoNfY/lowKRXgOqpxA46uiPlwZGwgNKy5s6bxWI6sY=",

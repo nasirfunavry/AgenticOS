@@ -81,7 +81,6 @@ PASSWORD_AUTH=your_secure_password # API Authentication Password - Required for 
 ### Production Mode
 
 ```bash
-bun build
 bun start
 ```
 
