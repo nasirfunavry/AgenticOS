@@ -18,6 +18,7 @@ async function fetchConnectedWebhook(): Promise<string | null> {
     const response = await axios.get(`${CHAINGPT_API_URL}/webhook-subscription/`, {
       headers: {
         "api-key": env.CHAINGPT_API_KEY,
+        origin: "https://chaingpt.org",
       },
     });
 
@@ -37,6 +38,7 @@ async function fetchCategories(): Promise<any[]> {
     const response = await axios.get(`${CHAINGPT_API_URL}/category-subscription`, {
       headers: {
         "api-key": env.CHAINGPT_API_KEY,
+        origin: "https://chaingpt.org",
       },
     });
 
