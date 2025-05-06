@@ -175,12 +175,12 @@ Body: { "categoryIds": [2, 3] }
 Register your webhook to automatically receive and post updates:
 
 ```bash
-POST https://your-domain.com}/api/webhook/register
+POST https://{your-domain.com}/api/webhook/register
 Headers:
 {
-    "api-key": "<your_chainGPT_api_key>"
+  "Authorization": "Bearer <your_password>"
 }
-Body: { "url": "{https://your-domain.com}/api/webhook/" }
+Body: { "url": "https://{your-domain.com}/api/webhook/" }
 ```
 
 AgenticOS will automatically post tweets from ChainGPT news updates.
