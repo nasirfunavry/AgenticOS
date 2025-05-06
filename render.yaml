@@ -3,7 +3,6 @@ services:
     name: agenticos-app
     env: node
     branch: main
-    repo: ${RENDER_GIT_REPO}
     buildCommand: bun install
     startCommand: bun start
     autoDeploy: true
@@ -12,8 +11,6 @@ services:
         value: 8000
       - key: NODE_ENV
         value: production
-      - key: RENDER_GIT_REPO
-        sync: false
 
       - key: TWITTER_CLIENT_ID
         sync: false
