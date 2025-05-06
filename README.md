@@ -126,7 +126,7 @@ To generate your Access Token and Refresh Token, open the following URL in your 
 
 ### Workflow 1: Scheduled Tweeting (Cron)
 
-there are two methods to schedule tweets
+There are two methods to schedule tweets.
 
 1. Define your schedule in `data/schedule.json`:
 
@@ -143,7 +143,7 @@ there are two methods to schedule tweets
 }
 ```
 
-2. Edit scheular in dashboard. You can find dashboard at <your_domain>/
+2. Edit scheular in dashboard. You can find dashboard at https://<your_domain>/
 
    ![Schedule Interface](images/image.png)
 
@@ -153,27 +153,9 @@ Tweets are auto-generated and posted according to this schedule (UTC).
 
 **Subscribe to Categories:**
 
-- Get available categories:
+There are two methods to subscribe to categories and register Webhook.
 
-```bash
-GET https://webapi.chaingpt.org/category-subscription/
-Headers:
-{
-    "api-key": "<your_chainGPT_api_key>"
-}
-```
-
-- Subscribe to categories:
-  you can subscribe to desired categories using their ids
-
-```bash
-POST https://webapi.chaingpt.org/category-subscription/subscribe
-Headers:
-{
-    "api-key": "<your_chainGPT_api_key>"
-}
-Body: { "categoryIds": [2, 3] }
-```
+1. Using following APIs:
 
 **Register Webhook:**
 
@@ -189,6 +171,41 @@ Body: { "url": "https://{your-domain.com}/api/webhook/" }
 ```
 
 AgenticOS will automatically post tweets from ChainGPT news updates.
+
+**Get available categories:**
+
+```bash
+GET https://webapi.chaingpt.org/category-subscription/
+Headers:
+{
+    "api-key": "<your_chainGPT_api_key>"
+}
+```
+
+**Subscribe to categories:**
+You can subscribe to desired categories using their ids
+
+```bash
+POST https://webapi.chaingpt.org/category-subscription/subscribe
+Headers:
+{
+    "api-key": "<your_chainGPT_api_key>"
+}
+Body: { "categoryIds": [2, 3] }
+```
+
+2. Using Dashboard:
+   Goto following page: https://<your_domain>/live-news
+
+**Register Webhook:**
+
+![Schedule Interface](images/register-webhook.png)
+
+**Subscribe to categories:**
+
+![Schedule Interface](images/subscribe-categories.png)
+
+---
 
 ## 🚀 Deployment on Render
 
@@ -300,6 +317,6 @@ Contributions are welcome! Follow these steps:
 
 ## 📧 Support
 
-Report issues via [GitHub Issues](https://github.com/yourusername/twitter-ai-agent/issues).
+Report issues via [GitHub Issues](https://github.com/ChainGPT-org/AgenticOS/issues).
 
 🚀 **Happy Coding!**
