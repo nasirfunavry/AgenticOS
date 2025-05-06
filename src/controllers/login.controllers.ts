@@ -14,18 +14,17 @@ interface TwitterTokens {
 // Get the domain dynamically
 const getDomain = (c: Context): string => {
   const host = c.req.header("host");
-  const protocol = c.req.header("x-forwarded-proto") || "https";
+  const isLocalhost = host?.includes("localhost") || host?.includes("127.0.0.1");
+  const protocol = isLocalhost ? "http" : c.req.header("x-forwarded-proto") || "https";
   return `${protocol}://${host}`;
 };
-console.log("getDomain(c),", (c: Context) => getDomain(c));
+
 // Configuration – replace with your Twitter app credentials
 const config = {
   clientId: process.env.TWITTER_CLIENT_ID, // Twitter OAuth2 Client ID
   clientSecret: process.env.TWITTER_CLIENT_SECRET, // Twitter OAuth2 Client Secret
-  redirectUri: (c: Context) => "http://localhost:8000/api/login/callback", //https://agenticos-app.onrender.com/api/login/callback", // Must match callback in Twitter app settings
-  // redirectUri: (c: Context) => `${getDomain(c)}/api/login/callback`,
-
-  port: 8000,
+  redirectUri: (c: Context) => `${getDomain(c)}/api/login/callback`, // Must match callback in Twitter app settings
+  port: process.env.PORT || 8000,
 };
 
 // Generate PKCE code verifier and challenge
@@ -47,6 +46,7 @@ export const login = async (c: Context) => {
     sameSite: "Lax",
     maxAge: 5 * 60 * 1000, // 5 minutes
   });
+
   // console.log("config.redirectUri,",config.redirectUri(c),)
   // Redirect to Twitter's OAuth 2.0 authorization endpoint
   const authorizationUrl = `https://twitter.com/i/oauth2/authorize?${querystring.stringify({
