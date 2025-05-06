@@ -117,7 +117,6 @@ To generate your Access Token and Refresh Token, open the following URL in your 
 ```bash
 # Access token Refresh Token Generator
    https://your-domain.com/api/login
-
 ```
 
     ⚠️ Make sure to replace your-domain.com with your actual deployed domain (to deploy you can refer to "Deployment on Render" section).
@@ -145,7 +144,7 @@ There are two methods to schedule tweets.
 
 2. Edit scheular in dashboard. You can find dashboard at https://<your_domain>/
 
-   ![Schedule Interface](images/image.png)
+   ![Schedule Interface](public/images/image.png)
 
 Tweets are auto-generated and posted according to this schedule (UTC).
 
@@ -199,11 +198,11 @@ Body: { "categoryIds": [2, 3] }
 
 **Register Webhook:**
 
-![Schedule Interface](images/register-webhook.png)
+![Schedule Interface](public/images/register-webhook.png)
 
 **Subscribe to categories:**
 
-![Schedule Interface](images/subscribe-categories.png)
+![Schedule Interface](public/images/subscribe-categories.png)
 
 ---
 
@@ -227,20 +226,10 @@ For example, if your repository URL is `https://github.com/john-doe/AgenticOS`, 
 https://render.com/deploy?repo=https://github.com/john-doe/AgenticOS
 ```
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=YOUR_REPO_URL)
-
-Deploy your Twitter automation app instantly on Render without needing to clone the code manually. Here's how it works:
-
-- **Simple Setup**: Fork the repository and use the Render deployment URL — no need to clone the code locally.
-- **Schedule Starts Automatically**: Once deployed, the app will begin executing the default `schedule.json` for posting tweets based on preset events.
-- **Environment Variables Required**:
-  - Set the required `.env` variables (see `.env.example`).
-  - These will be prompted during deployment.
-- **API Ready**: The app exposes APIs for:
-  - Twitter OAuth login ({your_domain/api/login})
-  - Access & refresh token management (after login you can save token after verifying password entered during setting env)
-  - Webhook registration ({your_domain/api/webhook/})
-  - Category subscription (ChainGPT)
+4. Configure environment variables as described in the [Configure env section](#step-2-configure-env) above
+5. Wait for the deployment to complete. This may take a few minutes.
+6. Once deployed, visit your domain and click on the "Refresh Token" tab in the sidebar to get twitter access and refresh token.
+7. You can schedule tweets in the "Scheduler" tab and add webhooks in the "Live News" page.
 
 ## 🔧 Customizing Scheduled Tweets (Optional)
 
@@ -259,20 +248,28 @@ Want to change the timing or tweet content?
 ## 📚 Project Structure
 
 ```
-twitter-ai-agent/
+AgenticOS/
 ├── data/
-│   └── schedule.json
+├── public/
+│   └── images/
 ├── src/
 │   ├── config/
 │   ├── controllers/
 │   ├── jobs/
+│   ├── middleware/
 │   ├── routes/
 │   ├── services/
 │   ├── types/
 │   ├── utils/
 │   └── index.ts
+├── views/
 ├── .env.example
+├── .npmrc
+├── bun.lock
 ├── package.json
+├── postcss.config.js
+├── render.yaml
+├── tailwind.config.js
 └── tsconfig.json
 ```
 
