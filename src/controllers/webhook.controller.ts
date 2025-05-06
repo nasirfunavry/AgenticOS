@@ -18,6 +18,7 @@ async function fetchConnectedWebhook(): Promise<string | null> {
     const response = await axios.get(`${CHAINGPT_API_URL}/webhook-subscription/`, {
       headers: {
         "Content-Type": "application/json",
+        "Accept-Encoding": "gzip, deflate",
         "api-key": env.CHAINGPT_API_KEY,
       },
     });
@@ -39,6 +40,7 @@ async function fetchCategories(): Promise<any[]> {
     const response = await axios.get(`${CHAINGPT_API_URL}/category-subscription`, {
       headers: {
         "Content-Type": "application/json",
+        "Accept-Encoding": "gzip, deflate",
         "api-key": env.CHAINGPT_API_KEY,
       },
     });
