@@ -169,23 +169,6 @@ export const callback = async (c: Context) => {
           position: relative;
         }
 
-        .copy-btn {
-          position: absolute;
-          right: 0.5rem;
-          top: 0.5rem;
-          background: var(--primary);
-          color: white;
-          border: none;
-          padding: 0.5rem;
-          border-radius: 4px;
-          cursor: pointer;
-          opacity: 0.9;
-        }
-
-        .copy-btn:hover {
-          opacity: 1;
-        }
-
         .password-section {
           margin-top: 2rem;
           padding-top: 1rem;
@@ -247,7 +230,6 @@ export const callback = async (c: Context) => {
             <span class="token-label">Access Token:</span>
             <div class="token-display">
               <div class="token-value" id="accessTokenValue">${access_token}</div>
-              <button class="copy-btn" onclick="copyToken('accessTokenValue')">Copy</button>
             </div>
           </div>
 
@@ -255,7 +237,6 @@ export const callback = async (c: Context) => {
             <span class="token-label">Refresh Token:</span>
             <div class="token-display">
               <div class="token-value" id="refreshTokenValue">${refresh_token}</div>
-              <button class="copy-btn" onclick="copyToken('refreshTokenValue')">Copy</button>
             </div>
           </div>
 
@@ -277,18 +258,6 @@ export const callback = async (c: Context) => {
       </footer>
 
       <script>
-        async function copyToken(elementId) {
-          const text = document.getElementById(elementId).innerText;
-          try {
-            await navigator.clipboard.writeText(text);
-            const btn = event.target;
-            btn.innerText = 'Copied!';
-            setTimeout(() => btn.innerText = 'Copy', 2000);
-          } catch (err) {
-            alert('Failed to copy text');
-          }
-        }
-
         async function submitForm(e) {
           e.preventDefault();
           const submitBtn = e.target.querySelector('button[type="submit"]');
