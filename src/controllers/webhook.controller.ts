@@ -17,10 +17,11 @@ async function fetchConnectedWebhook(): Promise<string | null> {
   try {
     const response = await axios.get(`${CHAINGPT_API_URL}/webhook-subscription/`, {
       headers: {
+        "Content-Type": "application/json",
         "api-key": env.CHAINGPT_API_KEY,
-        origin: "https://chaingpt.org",
       },
     });
+    console.log("🚀 ~ fetchConnectedWebhook ~ response:", response?.data);
 
     return response?.data?.webhookUrl || null;
   } catch (error) {
@@ -37,10 +38,11 @@ async function fetchCategories(): Promise<any[]> {
   try {
     const response = await axios.get(`${CHAINGPT_API_URL}/category-subscription`, {
       headers: {
+        "Content-Type": "application/json",
         "api-key": env.CHAINGPT_API_KEY,
-        origin: "https://chaingpt.org",
       },
     });
+    console.log("🚀 ~ fetchCategories ~ response:", response?.data);
 
     const allCategories = response?.data?.allCategories || [];
     const subscribedCategories = response?.data?.subscribedCategories || [];
