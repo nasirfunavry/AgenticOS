@@ -10,6 +10,7 @@
     "lint": "eslint 'src/**/*.ts'",
     "format": "prettier --write 'src/**/*.ts'",
     "test": "bun test",
+    "preCommit": "bun run format && bun run lint && bun run tailwind:build",
     "tailwind:build": "npx tailwindcss -i ./public/tailwind.css -o ./public/style.css --minify",
     "tailwind:watch": "npx tailwindcss -i ./public/tailwind.css -o ./public/style.css --watch './views/**/*.ejs'"
   },
