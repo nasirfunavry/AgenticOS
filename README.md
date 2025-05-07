@@ -93,7 +93,8 @@ bun build
 bun start
 ```
 ## 🚀 One-Click Deployment on Render
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/OWNER/REPO&branch=BRANCH) ↗️
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/nasirfunavry/AgenticOS&branch=main) ↗️
+
 Deploy your Twitter automation app instantly on Render without needing to clone the code manually. Here's how it works:
 
 - **Instant Setup**: Click the deployment button to launch the app — no need to clone the code locally.
