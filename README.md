@@ -93,8 +93,7 @@ bun build
 bun start
 ```
 ## 🚀 One-Click Deployment on Render
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/nasirfunavry/AgenticOS&branch=dev) ↗️
-
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/OWNER/REPO&branch=BRANCH) ↗️
 Deploy your Twitter automation app instantly on Render without needing to clone the code manually. Here's how it works:
 
 - **Instant Setup**: Click the deployment button to launch the app — no need to clone the code locally.
@@ -114,15 +113,16 @@ Deploy your Twitter automation app instantly on Render without needing to clone 
 ---
 ## Provide Twitter Access and Refresh Tokens
 
-### Generate access and refresh tokens
+### Generate Access and Refresh Tokens
 
-- You can generate Twitter access and refresh tokens using the OAuth 2.0 flow. For detailed instructions, please refer to [Twitter Token Generation Guide](./twitterTokenGeneration.md). then set with
+You have two options to generate your Twitter tokens:
 
+#### Option 1: Manual Token Generation ↗️
+1. Follow our [Twitter Token Generation Guide](./twitterTokenGeneration.md) to generate your tokens
+2. Add the tokens to your application using this API endpoint:
 ```bash
-# Add Twitter tokens to the application
-POST <https://your-domain.com>/api/tokens
+POST https://your-domain.com/api/tokens
 
-# Request body
 {
   "accessToken": "your_access_token",
   "refreshToken": "your_refresh_token",
@@ -130,21 +130,15 @@ POST <https://your-domain.com>/api/tokens
 }
 ```
 
-
-# **OR**
-
-# 🔐 Obtain Access and Refresh Tokens via Login API
-To generate your Access Token and Refresh Token, open the following URL in your browser:
-
-
+#### Option 2: Automatic Token Generator ↗️
+Simply visit our token generator page in your browser:
 ```bash
-# Access token Refresh Token Generator
-   https://your-domain.com/api/login
-   
-   ```
-    ⚠️ Make sure to replace your-domain.com with your actual deployed domain.
+https://your-domain.com/api/login
+```
 
+> ⚠️ **Important**: Replace `your-domain.com` with your actual deployed domain URL.
 
+---
 
 
 ## 📅 Automated Tweeting Workflows

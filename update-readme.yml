@@ -1,0 +1,33 @@
+name: Update README
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Update README
+        run: |
+          # Get repository owner and name
+          REPO_OWNER=$(echo $GITHUB_REPOSITORY | cut -d'/' -f1)
+          REPO_NAME=$(echo $GITHUB_REPOSITORY | cut -d'/' -f2)
+          
+          # Get current branch
+          BRANCH=${GITHUB_REF#refs/heads/}
+          
+          # Update README.md
+          sed -i "s|https://render.com/deploy?repo=https://github.com/[^/]*/[^&]*&branch=[^)]*|https://render.com/deploy?repo=https://github.com/$REPO_OWNER/$REPO_NAME\&branch=$BRANCH|g" README.md
+          
+          # Commit and push changes
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add README.md
+          git commit -m "Update deployment button with current repository info" || exit 0
+          git push
