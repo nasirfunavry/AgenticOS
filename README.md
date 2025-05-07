@@ -40,7 +40,7 @@ Each generated tweet consumes 1 ChainGPT credit.
 ### Step 1: Clone and Set Up
 
 ```bash
-git clone https://github.com/nasirfunavry/AgenticOS.git
+git clone https://github.com/ChainGPT-org/AgenticOS.git
 cd AgenticOS
 
 # Install Bun runtime
@@ -230,18 +230,6 @@ https://render.com/deploy?repo=https://github.com/john-doe/AgenticOS
 5. Wait for the deployment to complete. This may take a few minutes.
 6. Once deployed, visit your domain and click on the "Refresh Token" tab in the sidebar to get twitter access and refresh token.
 7. You can schedule tweets in the "Scheduler" tab and add webhooks in the "Live News" page.
-
-## 🔧 Customizing Scheduled Tweets (Optional)
-
-Want to change the timing or tweet content?
-
-1. **Clone the Auto-Created Repo**: After deployment, Render creates a linked GitHub repo under your account.
-2. **Update `schedule.json`**:
-   - Use UTC time.
-   - Provide your desired prompt and timing.
-3. **Push Changes**: Commit and push updates to the repo.
-4. **Auto-Redeploy**: Wait 1–2 minutes — Render will redeploy automatically.
-5. **Reset Access Token**: Call the token API again to reapply your OAuth tokens.
 
 ---
 
